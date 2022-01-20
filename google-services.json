@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "13227324047",
+    "project_id": "dht-erp",
+    "storage_bucket": "dht-erp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13227324047:android:4c3fb88cc0ff06f05436fa",
+        "android_client_info": {
+          "package_name": "com.jaylangkung.dht"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13227324047-r3i4q8rta9d1kvgj9nbs2vko1s1nufoa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFfYs3bnjKpXuXz3axoayLCkW1eBTUcY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13227324047-r3i4q8rta9d1kvgj9nbs2vko1s1nufoa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
