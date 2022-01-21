@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.databinding.ActivityMainBinding
-import com.jaylangkung.dht.menu.MenuEntity
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.response.MenuResponse
 import com.jaylangkung.dht.utils.Constants
@@ -38,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         val idlevel = myPreferences.getValue(Constants.USER_IDLEVEL).toString()
         val imgProfile = myPreferences.getValue(Constants.FOTO_PATH).toString()
+        val name = myPreferences.getValue(Constants.USER_NAMA).toString()
+        val email = myPreferences.getValue(Constants.USER_EMAIL).toString()
         val tokenAuth = getString(R.string.token_auth, myPreferences.getValue(Constants.TokenAuth).toString())
 
         binding.show.setOnClickListener {
@@ -45,17 +46,33 @@ class MainActivity : AppCompatActivity() {
         }
 
         val profile = ProfileDrawerItem().apply {
-            nameText = "Hanif Naufal"; descriptionText = "kakaknaufal@gmail.com"; iconUrl = imgProfile; identifier = 1
+            nameText = name; descriptionText = email; iconUrl = imgProfile; identifier = 1
         }
 
         // Create the AccountHeader
         headerView = AccountHeaderView(this).apply {
             attachToSliderView(binding.slider)
-            addProfiles(
-                profile,
-            )
+            addProfiles(profile)
             withSavedInstance(savedInstanceState)
         }
+
+        getMenu(idlevel, tokenAuth)
+
+    }
+
+    override fun onBackPressed() {
+        if (binding.root.isDrawerOpen(binding.slider)) {
+            binding.root.closeDrawer(binding.slider)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    companion object {
+        private const val PROFILE_SETTING = 100000
+    }
+
+    private fun getMenu(idlevel: String, tokenAuth: String) {
 
         val iconMenu: ArrayList<Int> = arrayListOf(
             R.drawable.ic_dashboard, //0
@@ -90,6 +107,7 @@ class MainActivity : AppCompatActivity() {
                                 val subMenu = menu[i].sub_menu
                                 if (!subMenu.isNullOrEmpty()) {
                                     val item = ExpandableDrawerItem().apply {
+
                                         try { //index out of bound exception handler
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconRes = iconMenu[idmodul]
                                         } catch (exception: ArrayIndexOutOfBoundsException) {
@@ -100,12 +118,14 @@ class MainActivity : AppCompatActivity() {
                                         for (j in 0 until subMenu.size) {
                                             val idmodulSub = subMenu[j].idmodul.toInt()
                                             subItems.add(SecondaryDrawerItem().apply {
+
                                                 try { //index out of bound exception handler
                                                     nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconRes = iconMenu[idmodulSub]
                                                 } catch (exception: ArrayIndexOutOfBoundsException) {
                                                     nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconicsIcon =
                                                         GoogleMaterial.Icon.gmd_favorite
                                                 }
+
                                             })
                                         }
                                     }
@@ -113,6 +133,7 @@ class MainActivity : AppCompatActivity() {
 
                                 } else {
                                     addItems(
+
                                         try { //index out of bound exception handler
                                             PrimaryDrawerItem().apply {
                                                 nameText = menu[i].menu; identifier = idmodul.toLong(); iconRes = iconMenu[idmodul]
@@ -123,6 +144,7 @@ class MainActivity : AppCompatActivity() {
                                                 GoogleMaterial.Icon.gmd_favorite
                                             }
                                         }
+
                                     )
                                 }
 
@@ -156,18 +178,5 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         })
-
-    }
-
-    override fun onBackPressed() {
-        if (binding.root.isDrawerOpen(binding.slider)) {
-            binding.root.closeDrawer(binding.slider)
-        } else {
-            super.onBackPressed()
-        }
-    }
-
-    companion object {
-        private const val PROFILE_SETTING = 100000
     }
 }
