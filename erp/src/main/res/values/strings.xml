@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">DHT</string>
+    <string name="token_auth">Bearer %1$s</string>
+
+    <string name="try_again">Silahkan coba lagi</string>
+    <string name="btn_back">tombol kembali</string>
+
+    <string name="error_logger">Error Logger</string>
+    <string name="open">Buka</string>
+    <string name="close">Tutup</string>
+
 </resources>
