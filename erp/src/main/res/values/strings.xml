@@ -1,12 +1,19 @@
 <resources>
-    <string name="app_name">DHT</string>
-    <string name="token_auth">Bearer %1$s</string>
+    <string name="app_name" translatable="false">DHT ERP System</string>
+    <string name="token_auth" translatable="false">Bearer %1$s</string>
 
     <string name="try_again">Silahkan coba lagi</string>
     <string name="btn_back">tombol kembali</string>
 
-    <string name="error_logger">Error Logger</string>
+    <string name="error_logger" translatable="false">Error Logger</string>
     <string name="open">Buka</string>
     <string name="close">Tutup</string>
+    <string name="login_title">Masuk ke akun kamu</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="btn_login">Masuk</string>
+    <string name="email_cant_empty">Email tidak boleh kosong</string>
+    <string name="email_format_error">Format email salah</string>
+    <string name="password_cant_empty">Kata sandi tidak boleh kosong</string>
 
 </resources>

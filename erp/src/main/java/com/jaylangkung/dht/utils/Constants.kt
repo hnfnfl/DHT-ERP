@@ -1,4 +1,4 @@
-package com.jaylangkung.brainnet_staff.utils
+package com.jaylangkung.dht.utils
 
 object Constants {
     const val LOGIN = "signIn"
@@ -12,5 +12,6 @@ object Constants {
     const val FOTO_PATH = "foto_path"
     const val DEVICE_TOKEN = "device_token"
     const val USER_IDLEVEL = "user_idlevel"
-    const val USER_JABATAN = "jabatan_user"
+    const val USER_LEVEL = "level"
+    const val USER_IDDEPARTEMEN = "iddepartemen"
 }

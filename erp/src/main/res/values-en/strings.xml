@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="try_again">Please try again</string>
+    <string name="btn_back">back button</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="login_title">Login to your account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="email_cant_empty">Email cannot be empty</string>
+    <string name="email_format_error">Incorrect email format</string>
+    <string name="password_cant_empty">Password cannot be empty</string>
+</resources>
