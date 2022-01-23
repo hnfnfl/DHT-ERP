@@ -2,7 +2,6 @@ package com.jaylangkung.dht
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.databinding.ActivityMainBinding
@@ -15,13 +14,14 @@ import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.iconics.iconicsIcon
 import com.mikepenz.materialdrawer.model.*
 import com.mikepenz.materialdrawer.model.interfaces.*
-import com.mikepenz.materialdrawer.util.addItems
+import com.mikepenz.materialdrawer.util.*
 import com.mikepenz.materialdrawer.widget.AccountHeaderView
 import es.dmoral.toasty.Toasty
 import okio.ArrayIndexOutOfBoundsException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +43,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.show.setOnClickListener {
             binding.root.openDrawer(binding.slider)
+        }
+
+        val currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        binding.tvGreetings.text = when (currentHour) {
+            in 4..11 -> getString(R.string.greetings, getString(R.string.greeting_morning), name)
+            in 12..14 -> getString(R.string.greetings, getString(R.string.greeting_afternoonA), name)
+            in 15..17 -> getString(R.string.greetings, getString(R.string.greeting_afternoonB), name)
+            else -> getString(R.string.greetings, getString(R.string.greeting_evening), name)
         }
 
         val profile = ProfileDrawerItem().apply {
@@ -102,7 +110,6 @@ class MainActivity : AppCompatActivity() {
                         val menu = response.body()!!.data
                         for (i in 0 until menu.size) {
                             val idmodul = menu[i].idmodul.toInt()
-                            Log.e("debug", "testoinmg")
                             binding.slider.apply {
                                 val subMenu = menu[i].sub_menu
                                 if (!subMenu.isNullOrEmpty()) {
@@ -120,7 +127,8 @@ class MainActivity : AppCompatActivity() {
                                             subItems.add(SecondaryDrawerItem().apply {
 
                                                 try { //index out of bound exception handler
-                                                    nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconRes = iconMenu[idmodulSub]
+                                                    nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconRes =
+                                                        iconMenu[idmodulSub]
                                                 } catch (exception: ArrayIndexOutOfBoundsException) {
                                                     nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconicsIcon =
                                                         GoogleMaterial.Icon.gmd_favorite
@@ -147,20 +155,37 @@ class MainActivity : AppCompatActivity() {
 
                                     )
                                 }
-
-                                onDrawerItemClickListener = { _, drawerItem, _ ->
-                                    var intent: Intent? = null
-                                    when (drawerItem is Nameable) {
-                                        else -> Toasty.warning(this@MainActivity, "", Toasty.LENGTH_SHORT).show()
-                                    }
-
-                                    if (intent != null) {
-                                        this@MainActivity.startActivity(intent)
-                                    }
-
-                                    false
-                                }
                             }
+                        }
+
+                        binding.slider.apply {
+                            addItems(
+                                DividerDrawerItem(),
+                                PrimaryDrawerItem().apply {
+                                    nameText = context.getString(R.string.setting); identifier = 97; iconRes = R.drawable.ic_setting
+                                },
+                                PrimaryDrawerItem().apply {
+                                    nameText = context.getString(R.string.about_app); identifier = 98; iconRes = R.drawable.ic_setting
+                                },
+                            )
+                            addStickyFooterItem(
+                                PrimaryDrawerItem().apply {
+                                    nameText = context.getString(R.string.logout); identifier = 99; iconRes = R.drawable.ic_logout
+                                }
+                            )
+                        }
+
+                        binding.slider.onDrawerItemClickListener = { _, drawerItem, _ ->
+                            var intent: Intent? = null
+                            when (drawerItem is Nameable) {
+                                else -> Toasty.warning(this@MainActivity, drawerItem.identifier.toString(), Toasty.LENGTH_SHORT).show()
+                            }
+
+                            if (intent != null) {
+                                this@MainActivity.startActivity(intent)
+                            }
+
+                            false
                         }
                     }
                 } else {

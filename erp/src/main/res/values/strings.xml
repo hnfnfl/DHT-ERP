@@ -15,5 +15,14 @@
     <string name="email_cant_empty">Email tidak boleh kosong</string>
     <string name="email_format_error">Format email salah</string>
     <string name="password_cant_empty">Kata sandi tidak boleh kosong</string>
+    <string name="tombol_menu">tombol menu</string>
+    <string name="greetings" translatable="false">%1$s, \n%2$s</string>
+    <string name="greeting_morning">Selamat Pagi</string>
+    <string name="greeting_afternoonA">Selamat Siang</string>
+    <string name="greeting_afternoonB">Selamat Sore</string>
+    <string name="greeting_evening">Selamat Malam</string>
+    <string name="about_app">Tentang Aplikasi</string>
+    <string name="logout">Keluar</string>
+    <string name="setting">Pengaturan</string>
 
 </resources>
