@@ -19,4 +19,7 @@
     <string name="logout">Logout</string>
     <string name="about_app">App Info</string>
     <string name="setting">Setting</string>
+    <string name="login_webapp">Login Web App</string>
+    <string name="qrcode_not_match">QR Code doesn\'t match</string>
+    <string name="menu_not_avail">Menu is not yet available</string>
 </resources>
