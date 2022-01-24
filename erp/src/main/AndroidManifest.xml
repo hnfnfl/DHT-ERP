@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
         <activity
+            android:name=".administrator.AdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".settings.SettingActivity"
             android:exported="false" />
         <activity android:name=".auth.LoginWebAppActivity" />

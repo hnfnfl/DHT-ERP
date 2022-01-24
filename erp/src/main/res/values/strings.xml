@@ -32,5 +32,9 @@
     <string name="no">Tidak</string>
     <string name="yes">Ya</string>
     <string name="confirm_logout">Apakah Anda yakin ingin keluar?</string>
+    <string name="icon_empty">ikon data kosong</string>
+    <string name="admin" translatable="false">Admin</string>
+    <string name="button_dropdown">tombol dropdown</string>
+    <string name="admin_name_level" translatable="false">%1$s | %2$s</string>
 
 </resources>

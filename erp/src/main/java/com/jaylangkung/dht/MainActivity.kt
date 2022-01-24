@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.administrator.AdminActivity
 import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
 import com.jaylangkung.dht.retrofit.AuthService
@@ -15,7 +16,6 @@ import com.jaylangkung.dht.retrofit.response.MenuResponse
 import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
 import com.jaylangkung.dht.utils.MySharedPreferences
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesomeBrand
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.iconics.iconicsIcon
 import com.mikepenz.materialdrawer.model.*
@@ -113,7 +113,8 @@ class MainActivity : AppCompatActivity() {
                                     val item = ExpandableDrawerItem().apply {
 
                                         try { //index out of bound exception handler
-                                            nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconRes = iconMenu[idmodul]
+                                            nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconRes =
+                                                iconMenu[idmodul]
                                         } catch (exception: ArrayIndexOutOfBoundsException) {
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconicsIcon =
                                                 GoogleMaterial.Icon.gmd_favorite
@@ -158,9 +159,6 @@ class MainActivity : AppCompatActivity() {
                         binding.slider.apply {
                             addStickyDrawerItems(
                                 SecondaryDrawerItem().apply {
-                                    nameRes = R.string.open_source; iconicsIcon = FontAwesomeBrand.Icon.fab_github; identifier = 96; isSelectable
-                                },
-                                SecondaryDrawerItem().apply {
                                     nameText = context.getString(R.string.setting); identifier = 97; iconRes = R.drawable.ic_setting
                                 },
                                 SecondaryDrawerItem().apply {
@@ -177,23 +175,23 @@ class MainActivity : AppCompatActivity() {
                             when (drawerItem.identifier) {
                                 1L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 2L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                3L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                4L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+//                                3L ->
+                                4L -> intent = Intent(this@MainActivity, AdminActivity::class.java)
                                 5L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 6L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 7L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 8L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 9L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                10L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+//                                10L ->
                                 11L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                12L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+//                                12L ->
                                 13L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 14L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 15L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 16L -> intent = Intent(this@MainActivity, MainActivity::class.java)
 
                                 99L -> logout(idadmin)
-                                else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
+//                                else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
                             }
 
                             if (intent != null) {

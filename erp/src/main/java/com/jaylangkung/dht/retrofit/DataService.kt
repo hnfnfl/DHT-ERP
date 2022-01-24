@@ -1,12 +1,10 @@
 package com.jaylangkung.dht.retrofit
 
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.retrofit.response.AdminResponse
 import com.jaylangkung.dht.retrofit.response.MenuResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface DataService {
     @FormUrlEncoded
@@ -24,4 +22,18 @@ interface DataService {
         @Header("Authorization") tokenAuth: String
     ): Call<DefaultResponse>
 
+    @GET("main/getAllAdmin")
+    fun getAllAdmin(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<AdminResponse>
+
+    @GET("main/getLevel")
+    fun getLevel(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<AdminResponse>
+
+    @GET("main/getDepartemen")
+    fun getDepartemen(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<AdminResponse>
 }

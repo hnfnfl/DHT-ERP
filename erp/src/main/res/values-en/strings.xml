@@ -26,4 +26,6 @@
     <string name="yes">Yes</string>
     <string name="confirm_logout">Are you sure you want to logout?</string>
     <string name="logout_success">Logout Successfully</string>
+    <string name="icon_empty">empty data icon</string>
+    <string name="button_dropdown">dropdown button</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".utils.room.LoggerActivity">
+    tools:context=".administrator.AdminActivity">
 
     <LinearLayout
         android:id="@+id/ll_header"
@@ -13,7 +13,7 @@
         android:layout_marginHorizontal="24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/sv_container"
+        app:layout_constraintBottom_toTopOf="@+id/rv_admin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -21,7 +21,7 @@
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/btn_back"
             android:minWidth="48dp"
             android:minHeight="48dp"
@@ -33,37 +33,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/error_logger"
+            android:text="@string/admin"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/sv_container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_admin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_admin" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loading_anim"
+        style="@style/SpinKitView.Large.ThreeBounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/secondaryLightColor"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_admin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_admin" />
 
-            <TextView
-                android:id="@+id/tv_display"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="24dp"
-                android:text="Hello World!"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    <ImageView
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/icon_empty"
+        android:src="@drawable/ic_empty"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_admin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_admin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
