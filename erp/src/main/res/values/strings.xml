@@ -23,10 +23,14 @@
     <string name="greeting_evening">Selamat Malam</string>
     <string name="about_app">Tentang Aplikasi</string>
     <string name="logout">Keluar</string>
+    <string name="logout_success">Berhasil Logout</string>
     <string name="setting">Pengaturan</string>
     <string name="login_webapp">Masuk Web App</string>
     <string name="qrcode_not_match">QR Code tidak cocok</string>
     <string name="open_source" translatable="false">Open Source</string>
     <string name="menu_not_avail">Menu belum tersedia</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Ya</string>
+    <string name="confirm_logout">Apakah Anda yakin ingin keluar?</string>
 
 </resources>

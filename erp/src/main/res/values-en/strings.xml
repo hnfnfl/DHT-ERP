@@ -22,4 +22,8 @@
     <string name="login_webapp">Login Web App</string>
     <string name="qrcode_not_match">QR Code doesn\'t match</string>
     <string name="menu_not_avail">Menu is not yet available</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="confirm_logout">Are you sure you want to logout?</string>
+    <string name="logout_success">Logout Successfully</string>
 </resources>

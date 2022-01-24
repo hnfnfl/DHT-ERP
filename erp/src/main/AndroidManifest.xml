@@ -14,6 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
+        <activity
+            android:name=".settings.SettingActivity"
+            android:exported="false" />
         <activity android:name=".auth.LoginWebAppActivity" />
         <activity android:name=".auth.LoginActivity" />
         <activity

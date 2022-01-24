@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
+import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
+import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.response.MenuResponse
 import com.jaylangkung.dht.utils.Constants
@@ -18,6 +21,7 @@ import com.mikepenz.materialdrawer.iconics.iconicsIcon
 import com.mikepenz.materialdrawer.model.*
 import com.mikepenz.materialdrawer.model.interfaces.*
 import com.mikepenz.materialdrawer.util.*
+import dev.shreyaspatil.MaterialDialog.MaterialDialog
 import es.dmoral.toasty.Toasty
 import okio.ArrayIndexOutOfBoundsException
 import retrofit2.Call
@@ -39,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         val idlevel = myPreferences.getValue(Constants.USER_IDLEVEL).toString()
         val imgProfile = myPreferences.getValue(Constants.FOTO_PATH).toString()
         val name = myPreferences.getValue(Constants.USER_NAMA).toString()
+        val idadmin = myPreferences.getValue(Constants.USER_IDADMIN).toString()
         val tokenAuth = getString(R.string.token_auth, myPreferences.getValue(Constants.TokenAuth).toString())
 
         binding.show.setOnClickListener {
@@ -60,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             .error(R.drawable.ic_profile)
             .into(binding.imgProfile)
 
-        getMenu(idlevel, tokenAuth)
+        getMenu(idadmin, idlevel, tokenAuth)
 
     }
 
@@ -72,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getMenu(idlevel: String, tokenAuth: String) {
+    private fun getMenu(idadmin: String, idlevel: String, tokenAuth: String) {
 
         val iconMenu: ArrayList<Int> = arrayListOf(
             R.drawable.ic_dashboard, //0
@@ -187,6 +192,7 @@ class MainActivity : AppCompatActivity() {
                                 15L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 16L -> intent = Intent(this@MainActivity, MainActivity::class.java)
 
+                                99L -> logout(idadmin)
                                 else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
                             }
 
@@ -213,4 +219,63 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun logout(idadmin: String) {
+        val service = RetrofitClient().apiRequest().create(AuthService::class.java)
+        val mDialog = MaterialDialog.Builder(this@MainActivity)
+            .setTitle(getString(R.string.logout))
+            .setMessage(getString(R.string.confirm_logout))
+            .setCancelable(true)
+            .setPositiveButton(
+                getString(R.string.no), R.drawable.ic_close
+            ) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            .setNegativeButton(
+                getString(R.string.yes), R.drawable.ic_logout
+            ) { dialogInterface, _ ->
+                myPreferences.setValue(Constants.TokenAuth, "")
+                myPreferences.setValue(Constants.USER, "")
+                myPreferences.setValue(Constants.USER_IDADMIN, "")
+                myPreferences.setValue(Constants.USER_EMAIL, "")
+                myPreferences.setValue(Constants.USER_NAMA, "")
+                myPreferences.setValue(Constants.USER_ALAMAT, "")
+                myPreferences.setValue(Constants.USER_TELP, "")
+                myPreferences.setValue(Constants.FOTO_PATH, "")
+                myPreferences.setValue(Constants.DEVICE_TOKEN, "")
+                myPreferences.setValue(Constants.USER_IDLEVEL, "")
+                myPreferences.setValue(Constants.USER_LEVEL, "")
+                myPreferences.setValue(Constants.USER_IDDEPARTEMEN, "")
+
+                service.logout(idadmin).enqueue(object : Callback<DefaultResponse> {
+                    override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                        if (response.isSuccessful) {
+                            if (response.body()!!.status == "success") {
+                                Toasty.success(this@MainActivity, getString(R.string.logout_success), Toasty.LENGTH_LONG).show()
+                                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                                finish()
+                                dialogInterface.dismiss()
+                            }
+                        } else {
+                            ErrorHandler().responseHandler(
+                                this@MainActivity,
+                                "logout | onResponse", response.message()
+                            )
+                        }
+                    }
+
+                    override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                        ErrorHandler().responseHandler(
+                            this@MainActivity,
+                            "logout | onFailure", t.message.toString()
+                        )
+                    }
+                })
+
+            }
+            .build()
+
+        mDialog.show()
+    }
+
 }
