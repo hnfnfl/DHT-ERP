@@ -3,8 +3,8 @@ package com.jaylangkung.dht.utils
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import com.jaylangkung.brainnet_staff.utils.room.Logger
-import com.jaylangkung.brainnet_staff.utils.room.LoggerDatabase
+import com.jaylangkung.dht.utils.room.Logger
+import com.jaylangkung.dht.utils.room.LoggerDatabase
 import com.jaylangkung.dht.R
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.GlobalScope
@@ -23,6 +23,9 @@ class ErrorHandler {
             }
             message.contains("Unable to resolve host") -> {
                 Toasty.error(context, "Silahkan cek koneksi internet Anda", Toasty.LENGTH_LONG).show()
+            }
+            message.contains("SSL handshake aborted") -> {
+                Toasty.error(context, "Terdapat permasalahan pada server", Toasty.LENGTH_LONG).show()
             }
             else -> {
                 Toasty.error(context, R.string.try_again, Toasty.LENGTH_LONG).show()

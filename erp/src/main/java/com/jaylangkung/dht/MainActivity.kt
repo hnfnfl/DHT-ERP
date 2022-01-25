@@ -2,13 +2,15 @@ package com.jaylangkung.dht
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
-import com.jaylangkung.dht.administrator.AdminActivity
+import com.jaylangkung.dht.admin.AdminActivity
 import com.jaylangkung.dht.auth.LoginActivity
+import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
@@ -60,13 +62,17 @@ class MainActivity : AppCompatActivity() {
 
         Glide.with(this@MainActivity)
             .load(imgProfile)
-            .apply(RequestOptions().override(150))
+            .apply(RequestOptions().override(100))
             .placeholder(R.drawable.ic_profile)
             .error(R.drawable.ic_profile)
             .into(binding.imgProfile)
 
         getMenu(idadmin, idlevel, tokenAuth)
 
+        binding.fabWebApp.setOnClickListener {
+            startActivity(Intent(this@MainActivity, LoginWebAppActivity::class.java))
+            finish()
+        }
     }
 
     override fun onBackPressed() {
@@ -114,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
                                         try { //index out of bound exception handler
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconRes =
-                                                iconMenu[idmodul]
+                                                iconMenu[idmodul]; icon
                                         } catch (exception: ArrayIndexOutOfBoundsException) {
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconicsIcon =
                                                 GoogleMaterial.Icon.gmd_favorite
@@ -159,9 +165,6 @@ class MainActivity : AppCompatActivity() {
                         binding.slider.apply {
                             addStickyDrawerItems(
                                 SecondaryDrawerItem().apply {
-                                    nameText = context.getString(R.string.setting); identifier = 97; iconRes = R.drawable.ic_setting
-                                },
-                                SecondaryDrawerItem().apply {
                                     nameText = context.getString(R.string.about_app); identifier = 98; iconRes = R.drawable.ic_setting
                                 },
                                 PrimaryDrawerItem().apply {
@@ -175,23 +178,23 @@ class MainActivity : AppCompatActivity() {
                             when (drawerItem.identifier) {
                                 1L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 2L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-//                                3L ->
+                                3L -> Log.d("menu", drawerItem.identifier.toString())
                                 4L -> intent = Intent(this@MainActivity, AdminActivity::class.java)
                                 5L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 6L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 7L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 8L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 9L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-//                                10L ->
+                                10L -> Log.d("menu", drawerItem.identifier.toString())
                                 11L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-//                                12L ->
+                                12L -> Log.d("menu", drawerItem.identifier.toString())
                                 13L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 14L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 15L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 16L -> intent = Intent(this@MainActivity, MainActivity::class.java)
 
                                 99L -> logout(idadmin)
-//                                else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
+                                else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
                             }
 
                             if (intent != null) {

@@ -2,10 +2,7 @@ package com.jaylangkung.dht.auth
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.budiyev.android.codescanner.*
@@ -22,6 +19,16 @@ import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.os.VibrationEffect
+
+import android.os.Build
+
+import android.os.Vibrator
+
+import android.os.VibratorManager
+
+
+
 
 class LoginWebAppActivity : AppCompatActivity() {
 
@@ -84,12 +91,19 @@ class LoginWebAppActivity : AppCompatActivity() {
     }
 
     private fun vibrate() {
-        val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        if (Build.VERSION.SDK_INT >= 26) {
+        val vibrator: Vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator
+        } else {
+            getSystemService(VIBRATOR_SERVICE) as Vibrator
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
         } else {
             vibrator.vibrate(200)
         }
+
     }
 
     private fun insertWebApp(idadmin: String, device_id: String, tokenAuth: String) {

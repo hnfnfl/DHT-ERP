@@ -1,4 +1,4 @@
-package com.jaylangkung.brainnet_staff.utils
+package com.jaylangkung.dht.utils
 
 import android.annotation.SuppressLint
 import com.google.firebase.messaging.FirebaseMessagingService

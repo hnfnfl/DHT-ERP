@@ -100,6 +100,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                 } else {
+                    binding.btnLogin.endAnimation()
                     ErrorHandler().responseHandler(
                         this@LoginActivity,
                         "loginProcess | onResponse", response.message()

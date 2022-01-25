@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
-import com.jaylangkung.brainnet_staff.utils.room.Logger
-import com.jaylangkung.brainnet_staff.utils.room.LoggerDatabase
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.databinding.ActivityLoggerBinding
 import kotlinx.coroutines.GlobalScope

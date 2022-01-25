@@ -1,4 +1,4 @@
-package com.jaylangkung.dht.administrator
+package com.jaylangkung.dht.admin
 
 class AdminEntity(
     var idadmin: String = "",

@@ -35,6 +35,19 @@
     <string name="icon_empty">ikon data kosong</string>
     <string name="admin" translatable="false">Admin</string>
     <string name="button_dropdown">tombol dropdown</string>
-    <string name="admin_name_level" translatable="false">%1$s | %2$s</string>
+    <string name="admin_name_level" translatable="false">%1$s \n%2$s</string>
+    <string name="icon_admin_edit">ikon tombol edit admin</string>
+    <string name="admin_edit">Edit Profil</string>
+    <string name="icon_admin_change_pass">ikon tombol ganti kata sandi</string>
+    <string name="admin_change_pass">Ganti Kata Sandi</string>
+    <string name="icon_admin_reset_login">ikon tombol reset login</string>
+    <string name="admin_reset_login">Reset Login</string>
+    <string name="icon_admin_delete">ikon tombol hapus admin</string>
+    <string name="admin_delete">Hapus Profil</string>
+    <string name="password_again">Masukkan Kata Sandi Lagi</string>
+    <string name="btn_save">Simpan</string>
+    <string name="pass_not_validated_desc">Kata sandi harus minimal 8 karakter, dan harus menyertakan setidaknya satu huruf besar, satu huruf kecil, satu digit angka, dan tidak boleh ada spasi.</string>
+    <string name="pass_not_match">Kata sandi tidak sama</string>
+    <string name="change_pass_name">Nama Admin : %1$s</string>
 
 </resources>

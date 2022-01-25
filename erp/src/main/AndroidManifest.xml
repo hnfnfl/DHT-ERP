@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
         <activity
-            android:name=".administrator.AdminActivity"
+            android:name=".admin.AdminChangePassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminActivity"
             android:exported="false" />
         <activity
             android:name=".settings.SettingActivity"

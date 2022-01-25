@@ -1,4 +1,4 @@
-package com.jaylangkung.dht.administrator
+package com.jaylangkung.dht.admin
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityAdminBinding
+import com.jaylangkung.dht.databinding.BottomSheetAdminActionBinding
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.response.AdminResponse
 import com.jaylangkung.dht.utils.Constants
@@ -22,6 +24,7 @@ import retrofit2.Response
 class AdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminBinding
+    private lateinit var bsBinding: BottomSheetAdminActionBinding
     private lateinit var myPreferences: MySharedPreferences
     private lateinit var adminAdapter: AdminAdapter
     private var listData: ArrayList<AdminEntity> = arrayListOf()
@@ -40,6 +43,39 @@ class AdminActivity : AppCompatActivity() {
         }
 
         getAllAdmin(tokenAuth)
+
+        adminAdapter.setOnItemClickCallback(object : AdminAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: ArrayList<AdminEntity>, position: Int) {
+                bsBinding = BottomSheetAdminActionBinding.inflate(layoutInflater)
+                val dialog = BottomSheetDialog(this@AdminActivity)
+                val idadmin = data[position].idadmin
+                val name = data[position].nama
+
+                bsBinding.llEdit.setOnClickListener {
+
+                }
+
+                bsBinding.llChangePass.setOnClickListener {
+                    startActivity(Intent(this@AdminActivity, AdminChangePassActivity::class.java)
+                        .apply {
+                            putExtra(AdminChangePassActivity.idadmin, idadmin)
+                            putExtra(AdminChangePassActivity.name, name)
+                        })
+                    finish()
+                }
+
+                bsBinding.llResetLogin.setOnClickListener {
+
+                }
+
+                bsBinding.llDelete.setOnClickListener {
+
+                }
+                dialog.setCancelable(true)
+                dialog.setContentView(bsBinding.root)
+                dialog.show()
+            }
+        })
     }
 
     override fun onBackPressed() {

@@ -1,4 +1,4 @@
-package com.jaylangkung.brainnet_staff.utils.room
+package com.jaylangkung.dht.utils.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

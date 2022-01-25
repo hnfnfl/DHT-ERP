@@ -36,4 +36,12 @@ interface DataService {
     fun getDepartemen(
         @Header("Authorization") tokenAuth: String,
     ): Call<AdminResponse>
+
+    @FormUrlEncoded
+    @POST("main/updatePassword")
+    fun updatePassword(
+        @Field("idadmin") idadmin: String,
+        @Field("password") password: String,
+        @Header("Authorization") tokenAuth: String
+    ): Call<DefaultResponse>
 }
