@@ -56,5 +56,6 @@
     <string name="admin_address">Alamat</string>
     <string name="admin_phone">Nomor Telp.</string>
     <string name="current_level">level sekarang : %1$s</string>
+    <string name="success_update_profile">Berhasil melakukan update profil</string>
 
 </resources>

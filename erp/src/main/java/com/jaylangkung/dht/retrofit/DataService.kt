@@ -4,6 +4,8 @@ import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.retrofit.response.AdminResponse
 import com.jaylangkung.dht.retrofit.response.DataSpinnerResponse
 import com.jaylangkung.dht.retrofit.response.MenuResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -39,5 +41,13 @@ interface DataService {
         @Field("idadmin") idadmin: String,
         @Field("password") password: String,
         @Header("Authorization") tokenAuth: String
+    ): Call<DefaultResponse>
+
+    @Multipart
+    @POST("main/updateProfile")
+    fun updateProfile(
+        @Part("idadmin") idadmin: RequestBody,
+        @Part filefoto: MultipartBody.Part? = null,
+        @Header("Authorization") token: String
     ): Call<DefaultResponse>
 }
