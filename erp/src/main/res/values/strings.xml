@@ -49,5 +49,12 @@
     <string name="pass_not_validated_desc">Kata sandi harus minimal 8 karakter, dan harus menyertakan setidaknya satu huruf besar, satu huruf kecil, satu digit angka, dan tidak boleh ada spasi.</string>
     <string name="pass_not_match">Kata sandi tidak sama</string>
     <string name="change_pass_name">Nama Admin : %1$s</string>
+    <string name="change_photo">Ubah foto</string>
+    <string name="choose_level">Pilih Level</string>
+    <string name="choose_department">Pilih Departemen</string>
+    <string name="admin_name">Nama</string>
+    <string name="admin_address">Alamat</string>
+    <string name="admin_phone">Nomor Telp.</string>
+    <string name="current_level">level sekarang : %1$s</string>
 
 </resources>

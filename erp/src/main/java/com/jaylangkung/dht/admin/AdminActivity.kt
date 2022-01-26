@@ -50,26 +50,44 @@ class AdminActivity : AppCompatActivity() {
                 val dialog = BottomSheetDialog(this@AdminActivity)
                 val idadmin = data[position].idadmin
                 val name = data[position].nama
+                val level = data[position].level
+                val departemen = data[position].departemen
+                val alamat = data[position].alamat
+                val telp = data[position].telp
 
                 bsBinding.llEdit.setOnClickListener {
-
+                    startActivity(Intent(this@AdminActivity, EditProfileActivity::class.java)
+                        .apply {
+                            putExtra(EditProfileActivity.idadmin, idadmin)
+                            putExtra(EditProfileActivity.level, level)
+                            putExtra(EditProfileActivity.departemen, departemen)
+                            putExtra(EditProfileActivity.nama, name)
+                            putExtra(EditProfileActivity.alamat, alamat)
+                            putExtra(EditProfileActivity.telp, telp)
+                        })
+                    finish()
+                    dialog.dismiss()
                 }
 
                 bsBinding.llChangePass.setOnClickListener {
-                    startActivity(Intent(this@AdminActivity, AdminChangePassActivity::class.java)
+                    startActivity(Intent(this@AdminActivity, ChangePassActivity::class.java)
                         .apply {
-                            putExtra(AdminChangePassActivity.idadmin, idadmin)
-                            putExtra(AdminChangePassActivity.name, name)
+                            putExtra(ChangePassActivity.idadmin, idadmin)
+                            putExtra(ChangePassActivity.nama, name)
                         })
                     finish()
+                    dialog.dismiss()
                 }
 
                 bsBinding.llResetLogin.setOnClickListener {
+
+                    dialog.dismiss()
 
                 }
 
                 bsBinding.llDelete.setOnClickListener {
 
+                    dialog.dismiss()
                 }
                 dialog.setCancelable(true)
                 dialog.setContentView(bsBinding.root)

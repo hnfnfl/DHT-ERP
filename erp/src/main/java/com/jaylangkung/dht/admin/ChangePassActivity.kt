@@ -18,24 +18,24 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
 
-class AdminChangePassActivity : AppCompatActivity() {
+class ChangePassActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminChangePassBinding
     private lateinit var myPreferences: MySharedPreferences
 
     companion object {
         const val idadmin = "idadmin"
-        const val name = "name"
+        const val nama = "name"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminChangePassBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        myPreferences = MySharedPreferences(this@AdminChangePassActivity)
+        myPreferences = MySharedPreferences(this@ChangePassActivity)
 
         val idadmin = intent.getStringExtra(idadmin).toString()
-        val name = intent.getStringExtra(name).toString()
+        val name = intent.getStringExtra(nama).toString()
         val tokenAuth = getString(R.string.token_auth, myPreferences.getValue(Constants.TokenAuth).toString())
 
         binding.tvAdminName.text = getString(R.string.change_pass_name, name)
@@ -54,7 +54,7 @@ class AdminChangePassActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@AdminChangePassActivity, AdminActivity::class.java))
+        startActivity(Intent(this@ChangePassActivity, AdminActivity::class.java))
         finish()
     }
 
@@ -109,14 +109,14 @@ class AdminChangePassActivity : AppCompatActivity() {
             override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
-                        Toasty.success(this@AdminChangePassActivity, response.body()!!.message, Toasty.LENGTH_SHORT).show()
-                        startActivity(Intent(this@AdminChangePassActivity, AdminActivity::class.java))
+                        Toasty.success(this@ChangePassActivity, response.body()!!.message, Toasty.LENGTH_SHORT).show()
+                        startActivity(Intent(this@ChangePassActivity, AdminActivity::class.java))
                         finish()
                     }
                 } else {
                     binding.btnSavePassword.endAnimation()
                     ErrorHandler().responseHandler(
-                        this@AdminChangePassActivity,
+                        this@ChangePassActivity,
                         "loginProcess | onResponse", response.message()
                     )
                 }
@@ -125,7 +125,7 @@ class AdminChangePassActivity : AppCompatActivity() {
             override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                 binding.btnSavePassword.endAnimation()
                 ErrorHandler().responseHandler(
-                    this@AdminChangePassActivity,
+                    this@ChangePassActivity,
                     "loginProcess | onResponse", t.message.toString()
                 )
             }

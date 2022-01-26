@@ -41,4 +41,11 @@
     <string name="password_again">Enter Password Again</string>
     <string name="pass_not_match">Password are not same</string>
     <string name="change_pass_name">Admin Name : %1$s</string>
+    <string name="change_photo">Change Photo</string>
+    <string name="choose_level">Choose Level</string>
+    <string name="choose_department">Choose Department</string>
+    <string name="admin_name">Name</string>
+    <string name="admin_address">Address</string>
+    <string name="admin_phone">Phone Number</string>
+    <string name="current_level">current level : %1$s</string>
 </resources>

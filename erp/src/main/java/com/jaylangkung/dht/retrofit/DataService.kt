@@ -2,6 +2,7 @@ package com.jaylangkung.dht.retrofit
 
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.retrofit.response.AdminResponse
+import com.jaylangkung.dht.retrofit.response.DataSpinnerResponse
 import com.jaylangkung.dht.retrofit.response.MenuResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -27,15 +28,10 @@ interface DataService {
         @Header("Authorization") tokenAuth: String,
     ): Call<AdminResponse>
 
-    @GET("main/getLevel")
-    fun getLevel(
+    @GET("main/getSpinnerData")
+    fun getSpinnerData(
         @Header("Authorization") tokenAuth: String,
-    ): Call<AdminResponse>
-
-    @GET("main/getDepartemen")
-    fun getDepartemen(
-        @Header("Authorization") tokenAuth: String,
-    ): Call<AdminResponse>
+    ): Call<DataSpinnerResponse>
 
     @FormUrlEncoded
     @POST("main/updatePassword")
