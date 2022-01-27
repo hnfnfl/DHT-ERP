@@ -47,6 +47,19 @@
     <string name="admin_name">Name</string>
     <string name="admin_address">Address</string>
     <string name="admin_phone">Phone Number</string>
-    <string name="current_level">current level : %1$s</string>
     <string name="success_update_profile">Successfully updated profile</string>
+    <string name="level_cant_empty">Level cannot be empty</string>
+    <string name="department_cant_empty">Department cannot be empty</string>
+    <string name="name_cant_empty">Name cannot be empty</string>
+    <string name="address_cant_empty">Address cannot be empty</string>
+    <string name="phone_cant_empty">Phone number cannot be empty</string>
+    <string name="confirm_reset_login_title">Confirm Reset Login</string>
+    <string name="confirm_reset_login_desc">Are you sure you want to reset user login <b>%1$s</b>?</string>
+    <string name="admin_email">Email</string>
+    <string name="confirm_delete_title">Confirm Delete User</string>
+    <string name="confirm_delete_desc">Are you sure you want to delete user %1$s?</string>
+    <string name="password_change_success">Password changed successfully</string>
+    <string name="login_reset_success">Login successfully reset</string>
+    <string name="delete_user_success">User deleted successfully</string>
+    <string name="please_wait">Please wait</string>
 </resources>

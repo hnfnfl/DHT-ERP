@@ -10,6 +10,7 @@
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_bug.xml" value="0.3828125" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_building.xml" value="0.3828125" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_clipboard.xml" value="0.3828125" />
+        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_close.xml" value="0.36666666666666664" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_dashboard.xml" value="0.3828125" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_delete_user.xml" value="0.3828125" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_edit_user.xml" value="0.3828125" />
@@ -21,8 +22,11 @@
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_sticky_note.xml" value="0.3828125" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_verified_user.xml" value="0.3828125" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/drawable/ic_wrench.xml" value="0.3828125" />
+        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_admin.xml" value="0.33" />
+        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_edit_profile.xml" value="0.33" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_reset_login.xml" value="0.2848731884057971" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/header_nav.xml" value="0.2028985507246377" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/menu/menu_nav.xml" value="0.36666666666666664" />

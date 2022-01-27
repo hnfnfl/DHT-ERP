@@ -109,7 +109,7 @@ class ChangePassActivity : AppCompatActivity() {
             override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
-                        Toasty.success(this@ChangePassActivity, response.body()!!.message, Toasty.LENGTH_SHORT).show()
+                        Toasty.success(this@ChangePassActivity, getString(R.string.password_change_success), Toasty.LENGTH_SHORT).show()
                         startActivity(Intent(this@ChangePassActivity, AdminActivity::class.java))
                         finish()
                     }

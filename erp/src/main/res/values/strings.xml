@@ -55,7 +55,20 @@
     <string name="admin_name">Nama</string>
     <string name="admin_address">Alamat</string>
     <string name="admin_phone">Nomor Telp.</string>
-    <string name="current_level">level sekarang : %1$s</string>
     <string name="success_update_profile">Berhasil melakukan update profil</string>
+    <string name="level_cant_empty">Level tidak boleh kosong</string>
+    <string name="department_cant_empty">Departemen tidak boleh kosong</string>
+    <string name="name_cant_empty">Nama tidak boleh kosong</string>
+    <string name="address_cant_empty">Alamat tidak boleh kosong</string>
+    <string name="phone_cant_empty">Nomor telp tidak boleh kosong</string>
+    <string name="admin_email">Email</string>
+    <string name="confirm_reset_login_title">Konfirmasi Reset Login</string>
+    <string name="confirm_reset_login_desc">Apakah Anda yakin ingin mereset login pengguna %1$s?</string>
+    <string name="confirm_delete_title">Konfirmasi Hapus Pengguna</string>
+    <string name="confirm_delete_desc">Apakah Anda yakin ingin menghapus pengguna %1$s?</string>
+    <string name="password_change_success">Kata sandi berhasil diubah</string>
+    <string name="login_reset_success">Login berhasil di reset</string>
+    <string name="delete_user_success">Pengguna berhasil dihapus</string>
+    <string name="please_wait">Mohon tunggu</string>
 
 </resources>

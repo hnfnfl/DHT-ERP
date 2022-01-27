@@ -47,7 +47,27 @@ interface DataService {
     @POST("main/updateProfile")
     fun updateProfile(
         @Part("idadmin") idadmin: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("nama") nama: RequestBody,
+        @Part("alamat") alamat: RequestBody,
+        @Part("telp") telp: RequestBody,
+        @Part("idlevel") idlevel: RequestBody,
+        @Part("iddepartemen") iddepartemen: RequestBody,
         @Part filefoto: MultipartBody.Part? = null,
         @Header("Authorization") token: String
+    ): Call<DefaultResponse>
+
+    @FormUrlEncoded
+    @POST("main/deleteSecurity")
+    fun deleteSecurity(
+        @Field("idadmin") idadmin: String,
+        @Header("Authorization") tokenAuth: String
+    ): Call<DefaultResponse>
+
+    @FormUrlEncoded
+    @POST("main/deleteAdmin")
+    fun deleteAdmin(
+        @Field("idadmin") idadmin: String,
+        @Header("Authorization") tokenAuth: String
     ): Call<DefaultResponse>
 }

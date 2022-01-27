@@ -4,12 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.e_kan.utils.FileUtils
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
@@ -25,14 +25,12 @@ import com.jaylangkung.dht.utils.MySharedPreferences
 import es.dmoral.toasty.Toasty
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
 
 
 class EditProfileActivity : AppCompatActivity() {
@@ -52,8 +50,10 @@ class EditProfileActivity : AppCompatActivity() {
         const val level = "level"
         const val departemen = "departemen"
         const val nama = "nama"
+        const val email = "email"
         const val alamat = "alamat"
         const val telp = "telp"
+        const val img = "img"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,12 +63,14 @@ class EditProfileActivity : AppCompatActivity() {
         myPreferences = MySharedPreferences(this@EditProfileActivity)
 
         val tokenAuth = getString(R.string.token_auth, myPreferences.getValue(Constants.TokenAuth).toString())
-        val idadmin = intent.getStringExtra(idadmin).toString()
         val level = intent.getStringExtra(level).toString()
         val departemen = intent.getStringExtra(departemen).toString()
         val nama = intent.getStringExtra(nama).toString()
+        val email = intent.getStringExtra(email).toString()
         val alamat = intent.getStringExtra(alamat).toString()
         val telp = intent.getStringExtra(telp).toString()
+        val img = intent.getStringExtra(img).toString()
+
 
         binding.btnBack.setOnClickListener {
             onBackPressed()
@@ -77,8 +79,15 @@ class EditProfileActivity : AppCompatActivity() {
         getSpinnerData(tokenAuth, level, departemen)
 
         binding.tvEditAdminName.setText(nama)
+        binding.tvEditAdminEmail.setText(email)
         binding.tvEditAdminAddress.setText(alamat)
         binding.tvEditAdminPhone.setText(telp)
+        Glide.with(this@EditProfileActivity)
+            .load(img)
+            .apply(RequestOptions().override(100))
+            .placeholder(R.drawable.ic_profile)
+            .error(R.drawable.ic_profile)
+            .into(binding.imgProfile)
 
         binding.btnChangeImg.setOnClickListener {
             ImagePicker.with(this)
@@ -112,46 +121,24 @@ class EditProfileActivity : AppCompatActivity() {
         }
 
         binding.btnSaveEditProfile.setOnClickListener {
-            Log.e("debug", "$idlevel, $iddepartment")
-
-            val idadminMP = idadmin.toRequestBody(MultipartBody.FORM)
-            var photo: MultipartBody.Part? = null
-            photoUri?.let {
-                val file = FileUtils.getFile(this, photoUri)
-                val requestBodyPhoto = file?.asRequestBody(contentResolver.getType(it).toString().toMediaTypeOrNull())
-                if (file != null) {
-                    photo = requestBodyPhoto?.let { it1 -> MultipartBody.Part.createFormData("filefoto", file.name, it1) }
-                }
-            }
-
-            val service = RetrofitClient().apiRequest().create(DataService::class.java)
-            service.updateProfile(idadminMP, photo, tokenAuth).enqueue(object : Callback<DefaultResponse> {
-                override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
-                    if (response.isSuccessful) {
-                        if (response.body()!!.status == "success") {
-                            Toasty.success(this@EditProfileActivity, getString(R.string.success_update_profile), Toasty.LENGTH_LONG).show()
-                        } else {
-                            ErrorHandler().responseHandler(
-                                this@EditProfileActivity,
-                                "updateProfile | onResponse", response.message()
-                            )
-                        }
-                    } else {
-                        ErrorHandler().responseHandler(
-                            this@EditProfileActivity,
-                            "updateProfile | onResponse", response.message()
-                        )
+            if (validate()) {
+                val idadmin = intent.getStringExtra(idadmin).toString().toRequestBody(MultipartBody.FORM)
+                val adminName = binding.tvEditAdminName.text.toString().toRequestBody(MultipartBody.FORM)
+                val adminEmail = binding.tvEditAdminEmail.text.toString().toRequestBody(MultipartBody.FORM)
+                val adminAddress = binding.tvEditAdminAddress.text.toString().toRequestBody(MultipartBody.FORM)
+                val adminPhone = binding.tvEditAdminPhone.text.toString().toRequestBody(MultipartBody.FORM)
+                val adminLevel = idlevel.toRequestBody(MultipartBody.FORM)
+                val adminDepartment = iddepartment.toRequestBody(MultipartBody.FORM)
+                var photo: MultipartBody.Part? = null
+                photoUri?.let {
+                    val file = FileUtils.getFile(this, photoUri)
+                    val requestBodyPhoto = file?.asRequestBody(contentResolver.getType(it).toString().toMediaTypeOrNull())
+                    if (file != null) {
+                        photo = requestBodyPhoto?.let { it1 -> MultipartBody.Part.createFormData("filefoto", file.name, it1) }
                     }
                 }
-
-                override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
-                    ErrorHandler().responseHandler(
-                        this@EditProfileActivity,
-                        "updateProfile | onFailure", t.message.toString()
-                    )
-                }
-
-            })
+                updateProfile(idadmin, adminName, adminEmail, adminAddress, adminPhone, adminLevel, adminDepartment, photo, tokenAuth)
+            }
         }
 
     }
@@ -223,24 +210,83 @@ class EditProfileActivity : AppCompatActivity() {
         })
     }
 
-    private fun savebitmap(bmp: Uri?): File? {
-        val extStorageDirectory = Environment.getExternalStorageDirectory().toString()
-        var outStream: OutputStream? = null
-        // String temp = null;
-        var file = File(extStorageDirectory, "temp.png")
-        if (file.exists()) {
-            file.delete()
-            file = File(extStorageDirectory, "temp.png")
+    private fun validate(): Boolean {
+        when {
+            idlevel == "" -> {
+                Toasty.warning(this@EditProfileActivity, getString(R.string.level_cant_empty), Toasty.LENGTH_SHORT).show()
+                return false
+            }
+            iddepartment == "" -> {
+                Toasty.warning(this@EditProfileActivity, getString(R.string.department_cant_empty), Toasty.LENGTH_SHORT).show()
+                return false
+            }
+            binding.tvEditAdminName.text.toString() == "" -> {
+                binding.tvEditAdminName.error = getString(R.string.name_cant_empty)
+                binding.tvEditAdminName.requestFocus()
+                return false
+            }
+            binding.tvEditAdminAddress.text.toString() == "" -> {
+                binding.tvEditAdminAddress.error = getString(R.string.address_cant_empty)
+                binding.tvEditAdminAddress.requestFocus()
+                return false
+            }
+            binding.tvEditAdminPhone.text.toString() == "" -> {
+                binding.tvEditAdminPhone.error = getString(R.string.phone_cant_empty)
+                binding.tvEditAdminPhone.requestFocus()
+                return false
+            }
+            else -> return true
         }
-        try {
-            outStream = FileOutputStream(file)
-            outStream.flush()
-            outStream.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return null
-        }
-        return file
     }
 
+    private fun updateProfile(
+        idadmin: RequestBody,
+        adminName: RequestBody,
+        adminEmail: RequestBody,
+        adminAddress: RequestBody,
+        adminPhone: RequestBody,
+        adminLevel: RequestBody,
+        adminDepartment: RequestBody,
+        photo: MultipartBody.Part?,
+        tokenAuth: String
+    ) {
+        val selfidadmin = myPreferences.getValue(Constants.USER_IDADMIN).toString()
+        val service = RetrofitClient().apiRequest().create(DataService::class.java)
+        service.updateProfile(
+            idadmin, adminEmail, adminName, adminAddress,
+            adminPhone, adminLevel, adminDepartment, photo, tokenAuth
+        ).enqueue(object : Callback<DefaultResponse> {
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                        if (intent.getStringExtra(Companion.idadmin).toString() == selfidadmin) {
+                            myPreferences.setValue(Constants.USER_NAMA, binding.tvEditAdminName.text.toString())
+                            myPreferences.setValue(Constants.USER_EMAIL, binding.tvEditAdminEmail.text.toString())
+                            myPreferences.setValue(Constants.USER_ALAMAT, binding.tvEditAdminAddress.text.toString())
+                            myPreferences.setValue(Constants.USER_TELP, binding.tvEditAdminPhone.text.toString())
+//                            myPreferences.setValue(Constants.FOTO_PATH, response.body()!!.data[0].img)
+                            myPreferences.setValue(Constants.USER_LEVEL, idlevel)
+                            myPreferences.setValue(Constants.USER_IDDEPARTEMEN, iddepartment)
+                        }
+                        onBackPressed()
+                        Toasty.success(this@EditProfileActivity, getString(R.string.success_update_profile), Toasty.LENGTH_LONG).show()
+
+                    }
+                } else {
+                    ErrorHandler().responseHandler(
+                        this@EditProfileActivity,
+                        "updateProfile | onResponse", response.message()
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                ErrorHandler().responseHandler(
+                    this@EditProfileActivity,
+                    "updateProfile | onFailure", t.message.toString()
+                )
+            }
+
+        })
+    }
 }
