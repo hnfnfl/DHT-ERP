@@ -1,4 +1,4 @@
-package com.jaylangkung.dht.admin
+package com.jaylangkung.dht.administrator.admin
 
 import android.content.Intent
 import android.os.Bundle

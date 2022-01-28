@@ -70,5 +70,15 @@
     <string name="login_reset_success">Login berhasil di reset</string>
     <string name="delete_user_success">Pengguna berhasil dihapus</string>
     <string name="please_wait">Mohon tunggu</string>
+    <string name="login_webapp_success">Login berhasil</string>
+    <string name="disabled" translatable="false">disabled</string>
+    <string name="level" translatable="false">Level</string>
+    <string name="add_new_level">Tambah level baru</string>
+    <string name="icon_edit_level_name">ikon tombol edit nama level</string>
+    <string name="level_name_edit">Edit Nama Level</string>
+    <string name="icon_level_edit_access">ikon tombol edit hak akses</string>
+    <string name="level_edit_access">Edit Hak Akses</string>
+    <string name="icon_level_delete">ikon tombol hapus level</string>
+    <string name="level_delete">Hapus Level</string>
 
 </resources>

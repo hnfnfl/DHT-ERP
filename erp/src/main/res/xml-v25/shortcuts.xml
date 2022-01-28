@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_scan_qr_shortcuts"
+        android:shortcutDisabledMessage="@string/disabled"
+        android:shortcutId="compose"
+        android:shortcutLongLabel="@string/login_webapp"
+        android:shortcutShortLabel="@string/login_webapp">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.jaylangkung.dht.auth.LoginWebAppActivity"
+            android:targetPackage="com.jaylangkung.dht" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+    <!-- Specify more shortcuts here. -->
+</shortcuts>

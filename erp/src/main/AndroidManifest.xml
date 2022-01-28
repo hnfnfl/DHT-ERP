@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -22,13 +23,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
         <activity
-            android:name=".admin.EditProfileActivity"
+            android:name=".administrator.level.LevelActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.ChangePassActivity"
+            android:name=".administrator.admin.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.AdminActivity"
+            android:name=".administrator.admin.ChangePassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".administrator.admin.AdminActivity"
             android:exported="false" />
         <activity
             android:name=".settings.SettingActivity"
@@ -47,6 +51,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".MainActivity"

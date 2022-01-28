@@ -1,4 +1,4 @@
-package com.jaylangkung.dht.admin
+package com.jaylangkung.dht.administrator.admin
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,13 +10,13 @@ import com.jaylangkung.dht.databinding.ItemAdminBinding
 
 class AdminAdapter : RecyclerView.Adapter<AdminAdapter.AdminItemHolder>() {
 
-    private var listTodo = ArrayList<AdminEntity>()
+    private var listData = ArrayList<AdminEntity>()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setAdminItem(adminItem: List<AdminEntity>?) {
         if (adminItem == null) return
-        listTodo.clear()
-        listTodo.addAll(adminItem)
+        listData.clear()
+        listData.addAll(adminItem)
         notifyItemRangeChanged(0, adminItem.size)
     }
 
@@ -52,14 +52,14 @@ class AdminAdapter : RecyclerView.Adapter<AdminAdapter.AdminItemHolder>() {
     }
 
     override fun onBindViewHolder(holder: AdminItemHolder, position: Int) {
-        val vendorItem = listTodo[position]
+        val vendorItem = listData[position]
         holder.bind(vendorItem)
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listTodo, position)
+            onItemClickCallback.onItemClicked(listData, position)
         }
     }
 
-    override fun getItemCount(): Int = listTodo.size
+    override fun getItemCount(): Int = listData.size
 }
 
 

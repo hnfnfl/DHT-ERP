@@ -1,6 +1,5 @@
 package com.jaylangkung.dht.auth
 
-import android.content.Context
 import android.content.Intent
 import android.os.*
 import android.view.View
@@ -19,16 +18,6 @@ import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.os.VibrationEffect
-
-import android.os.Build
-
-import android.os.Vibrator
-
-import android.os.VibratorManager
-
-
-
 
 class LoginWebAppActivity : AppCompatActivity() {
 
@@ -114,7 +103,7 @@ class LoginWebAppActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     vibrate()
                     if (response.body()!!.status == "success") {
-                        Toasty.success(this@LoginWebAppActivity, "Login berhasil", Toasty.LENGTH_LONG).show()
+                        Toasty.success(this@LoginWebAppActivity, getString(R.string.login_webapp_success), Toasty.LENGTH_LONG).show()
                         onBackPressed()
                     }
                 } else {

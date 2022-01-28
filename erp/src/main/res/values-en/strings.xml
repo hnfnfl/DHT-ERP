@@ -62,4 +62,6 @@
     <string name="login_reset_success">Login successfully reset</string>
     <string name="delete_user_success">User deleted successfully</string>
     <string name="please_wait">Please wait</string>
+    <string name="login_webapp_success">Login successful</string>
+    <string name="add_new_level">Add new level</string>
 </resources>

@@ -3,6 +3,7 @@ package com.jaylangkung.dht.retrofit
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.retrofit.response.AdminResponse
 import com.jaylangkung.dht.retrofit.response.DataSpinnerResponse
+import com.jaylangkung.dht.retrofit.response.LevelResponse
 import com.jaylangkung.dht.retrofit.response.MenuResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -34,6 +35,11 @@ interface DataService {
     fun getSpinnerData(
         @Header("Authorization") tokenAuth: String,
     ): Call<DataSpinnerResponse>
+
+    @GET("main/getLevel")
+    fun getLevel(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<LevelResponse>
 
     @FormUrlEncoded
     @POST("main/updatePassword")
@@ -70,4 +76,11 @@ interface DataService {
         @Field("idadmin") idadmin: String,
         @Header("Authorization") tokenAuth: String
     ): Call<DefaultResponse>
+
+    @FormUrlEncoded
+    @POST("main/getHakAkses")
+    fun getHakAkses(
+        @Field("idlevel") idlevel: String,
+        @Header("Authorization") tokenAuth: String
+    ): Call<LevelResponse>
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".administrator.admin.AdminActivity">
+    tools:context=".administrator.level.LevelActivity">
 
     <LinearLayout
         android:id="@+id/ll_header"
@@ -13,7 +13,7 @@
         android:layout_marginHorizontal="24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/rv_admin"
+        app:layout_constraintBottom_toTopOf="@+id/rv_level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -33,14 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/admin"
+            android:text="@string/level"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_admin"
+        android:id="@+id/rv_level"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_admin" />
+        tools:listitem="@layout/item_level" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/loading_anim"
@@ -59,10 +59,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:SpinKit_Color="@color/secondaryLightColor"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_admin"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_level"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_admin" />
+        app:layout_constraintTop_toTopOf="@+id/rv_level" />
 
     <ImageView
         android:id="@+id/empty"
@@ -71,9 +71,23 @@
         android:contentDescription="@string/icon_empty"
         android:src="@drawable/ic_empty"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_admin"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_level"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_admin" />
+        app:layout_constraintTop_toTopOf="@+id/rv_level" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_add_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:src="@drawable/ic_add"
+        app:fab_colorNormal="@color/secondaryColor"
+        app:fab_colorPressed="@color/secondaryDarkColor"
+        app:fab_colorRipple="@color/secondaryColor"
+        app:fab_label="@string/add_new_level"
+        app:fab_size="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

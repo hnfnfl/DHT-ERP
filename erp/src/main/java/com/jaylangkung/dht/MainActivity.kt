@@ -8,7 +8,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
-import com.jaylangkung.dht.admin.AdminActivity
+import com.jaylangkung.dht.administrator.admin.AdminActivity
+import com.jaylangkung.dht.administrator.level.LevelActivity
 import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
@@ -181,7 +182,7 @@ class MainActivity : AppCompatActivity() {
                                 3L -> Log.d("menu", drawerItem.identifier.toString())
                                 4L -> intent = Intent(this@MainActivity, AdminActivity::class.java)
                                 5L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                6L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+                                6L -> intent = Intent(this@MainActivity, LevelActivity::class.java)
                                 7L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 8L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 9L -> intent = Intent(this@MainActivity, MainActivity::class.java)
