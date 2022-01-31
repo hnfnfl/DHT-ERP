@@ -80,5 +80,6 @@
     <string name="level_edit_access">Edit Hak Akses</string>
     <string name="icon_level_delete">ikon tombol hapus level</string>
     <string name="level_delete">Hapus Level</string>
+    <string name="level_name">Nama Level</string>
 
 </resources>

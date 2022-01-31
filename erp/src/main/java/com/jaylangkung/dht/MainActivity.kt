@@ -122,9 +122,9 @@ class MainActivity : AppCompatActivity() {
                                         try { //index out of bound exception handler
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconRes =
                                                 iconMenu[idmodul]; icon
-                                        } catch (exception: ArrayIndexOutOfBoundsException) {
+                                        } catch (exception: IndexOutOfBoundsException) {
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconicsIcon =
-                                                GoogleMaterial.Icon.gmd_favorite
+                                                GoogleMaterial.Icon.gmd_dashboard
                                         }
 
                                         for (j in 0 until subMenu.size) {
@@ -134,9 +134,9 @@ class MainActivity : AppCompatActivity() {
                                                 try { //index out of bound exception handler
                                                     nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconRes =
                                                         iconMenu[idmodulSub]
-                                                } catch (exception: ArrayIndexOutOfBoundsException) {
+                                                } catch (exception: IndexOutOfBoundsException) {
                                                     nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconicsIcon =
-                                                        GoogleMaterial.Icon.gmd_favorite
+                                                        GoogleMaterial.Icon.gmd_dashboard
                                                 }
 
                                             })
@@ -151,10 +151,10 @@ class MainActivity : AppCompatActivity() {
                                             PrimaryDrawerItem().apply {
                                                 nameText = menu[i].menu; identifier = idmodul.toLong(); iconRes = iconMenu[idmodul]
                                             }
-                                        } catch (exception: ArrayIndexOutOfBoundsException) {
+                                        } catch (exception: IndexOutOfBoundsException) {
                                             PrimaryDrawerItem().apply {
                                                 nameText = menu[i].menu; identifier = idmodul.toLong(); iconicsIcon =
-                                                GoogleMaterial.Icon.gmd_favorite
+                                                GoogleMaterial.Icon.gmd_dashboard
                                             }
                                         }
 

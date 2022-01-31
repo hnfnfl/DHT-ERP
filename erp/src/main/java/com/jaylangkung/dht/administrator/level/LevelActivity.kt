@@ -1,18 +1,19 @@
 package com.jaylangkung.dht.administrator.level
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
-import com.jaylangkung.dht.administrator.admin.AdminEntity
 import com.jaylangkung.dht.databinding.ActivityLevelBinding
+import com.jaylangkung.dht.databinding.BottomSheetLevelActionBinding
+import com.jaylangkung.dht.databinding.BottomSheetLevelAddBinding
 import com.jaylangkung.dht.retrofit.DataService
-import com.jaylangkung.dht.retrofit.response.AdminResponse
 import com.jaylangkung.dht.retrofit.response.LevelResponse
 import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
@@ -24,6 +25,8 @@ import retrofit2.Response
 class LevelActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLevelBinding
+    private lateinit var addlevelbinding: BottomSheetLevelAddBinding
+    private lateinit var actionBinding: BottomSheetLevelActionBinding
     private lateinit var myPreferences: MySharedPreferences
     private lateinit var levelAdapter: LevelAdapter
     private var listData: ArrayList<LevelEntity> = arrayListOf()
@@ -31,6 +34,9 @@ class LevelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLevelBinding.inflate(layoutInflater)
+        addlevelbinding = BottomSheetLevelAddBinding.inflate(layoutInflater)
+        actionBinding = BottomSheetLevelActionBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         myPreferences = MySharedPreferences(this@LevelActivity)
         levelAdapter = LevelAdapter()
@@ -44,12 +50,40 @@ class LevelActivity : AppCompatActivity() {
         getLevel(tokenAuth)
 
         binding.fabAddLevel.setOnClickListener {
+            val dialog = BottomSheetDialog(this@LevelActivity)
+            val btnSave = addlevelbinding.btnSaveLevel
 
+            btnSave.setOnClickListener {
+
+                dialog.dismiss()
+            }
+            dialog.setCancelable(true)
+            dialog.setContentView(addlevelbinding.root)
+            dialog.show()
         }
 
-        levelAdapter.setOnItemClickCallback(object : LevelAdapter.OnItemClickCallback{
+        levelAdapter.setOnItemClickCallback(object : LevelAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<LevelEntity>, position: Int) {
+                val dialog = BottomSheetDialog(this@LevelActivity)
 
+                actionBinding.llEdit.setOnClickListener {
+                    addlevelbinding.inputLevelName.setText(data[position].level)
+                    dialog.dismiss()
+                }
+
+                actionBinding.llEditAccess.setOnClickListener {
+
+                    dialog.dismiss()
+                }
+
+                actionBinding.llDelete.setOnClickListener {
+
+                    dialog.dismiss()
+                }
+
+                dialog.setCancelable(true)
+                dialog.setContentView(actionBinding.root)
+                dialog.show()
             }
 
         })

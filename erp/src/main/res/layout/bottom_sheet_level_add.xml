@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
-                android:hint="Nama Level"
+                android:hint="@string/level_name"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>

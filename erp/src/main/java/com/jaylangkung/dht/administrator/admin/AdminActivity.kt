@@ -28,7 +28,7 @@ import retrofit2.Response
 class AdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminBinding
-    private lateinit var bsBinding: BottomSheetAdminActionBinding
+    private lateinit var actionBinding: BottomSheetAdminActionBinding
     private lateinit var myPreferences: MySharedPreferences
     private lateinit var adminAdapter: AdminAdapter
     private var listData: ArrayList<AdminEntity> = arrayListOf()
@@ -50,7 +50,7 @@ class AdminActivity : AppCompatActivity() {
 
         adminAdapter.setOnItemClickCallback(object : AdminAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<AdminEntity>, position: Int) {
-                bsBinding = BottomSheetAdminActionBinding.inflate(layoutInflater)
+                actionBinding = BottomSheetAdminActionBinding.inflate(layoutInflater)
                 val dialog = BottomSheetDialog(this@AdminActivity)
                 val idadmin = data[position].idadmin
                 val name = data[position].nama
@@ -61,7 +61,7 @@ class AdminActivity : AppCompatActivity() {
                 val telp = data[position].telp
                 val img = data[position].img
 
-                bsBinding.llEdit.setOnClickListener {
+                actionBinding.llEdit.setOnClickListener {
                     startActivity(Intent(this@AdminActivity, EditProfileActivity::class.java)
                         .apply {
                             putExtra(EditProfileActivity.idadmin, idadmin)
@@ -77,7 +77,7 @@ class AdminActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
 
-                bsBinding.llChangePass.setOnClickListener {
+                actionBinding.llChangePass.setOnClickListener {
                     startActivity(Intent(this@AdminActivity, ChangePassActivity::class.java)
                         .apply {
                             putExtra(ChangePassActivity.idadmin, idadmin)
@@ -87,7 +87,7 @@ class AdminActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
 
-                bsBinding.llResetLogin.setOnClickListener {
+                actionBinding.llResetLogin.setOnClickListener {
                     val mDialog = MaterialDialog.Builder(this@AdminActivity)
                         .setTitle(getString(R.string.confirm_reset_login_title))
                         .setMessage(getString(R.string.confirm_reset_login_desc, name))
@@ -106,7 +106,7 @@ class AdminActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
 
-                bsBinding.llDelete.setOnClickListener {
+                actionBinding.llDelete.setOnClickListener {
                     val mDialog = MaterialDialog.Builder(this@AdminActivity)
                         .setTitle(getString(R.string.confirm_delete_title))
                         .setMessage(getString(R.string.confirm_delete_desc, name))
@@ -125,7 +125,7 @@ class AdminActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
                 dialog.setCancelable(true)
-                dialog.setContentView(bsBinding.root)
+                dialog.setContentView(actionBinding.root)
                 dialog.show()
             }
         })
