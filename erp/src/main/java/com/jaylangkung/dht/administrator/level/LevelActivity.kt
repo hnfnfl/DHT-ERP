@@ -2,6 +2,7 @@ package com.jaylangkung.dht.administrator.level
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -49,26 +50,42 @@ class LevelActivity : AppCompatActivity() {
 
         getLevel(tokenAuth)
 
+        val dialog = BottomSheetDialog(this@LevelActivity)
+        val dialogAddLevel = BottomSheetDialog(this@LevelActivity)
+        val btnSave = addlevelbinding.btnSaveLevel
+        dialog.setContentView(actionBinding.root)
+        dialogAddLevel.setContentView(addlevelbinding.root)
+
         binding.fabAddLevel.setOnClickListener {
-            val dialog = BottomSheetDialog(this@LevelActivity)
-            val btnSave = addlevelbinding.btnSaveLevel
+            addlevelbinding.inputLevelName.setText("")
 
             btnSave.setOnClickListener {
+//                btnSave.startAnimation()
 
-                dialog.dismiss()
+                dialogAddLevel.dismiss()
             }
-            dialog.setCancelable(true)
-            dialog.setContentView(addlevelbinding.root)
-            dialog.show()
+
+//            btnSave.endAnimation()
+            dialogAddLevel.setCancelable(true)
+            dialogAddLevel.show()
         }
 
         levelAdapter.setOnItemClickCallback(object : LevelAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<LevelEntity>, position: Int) {
-                val dialog = BottomSheetDialog(this@LevelActivity)
-
                 actionBinding.llEdit.setOnClickListener {
                     addlevelbinding.inputLevelName.setText(data[position].level)
+
+                    btnSave.setOnClickListener {
+//                        btnSave.startAnimation()
+                        val newLevelName = addlevelbinding.inputLevelName.text.toString()
+                        Log.e("debug", newLevelName)
+                        dialogAddLevel.dismiss()
+                    }
+
+//                    btnSave.endAnimation()
                     dialog.dismiss()
+                    dialogAddLevel.setCancelable(true)
+                    dialogAddLevel.show()
                 }
 
                 actionBinding.llEditAccess.setOnClickListener {
@@ -82,7 +99,6 @@ class LevelActivity : AppCompatActivity() {
                 }
 
                 dialog.setCancelable(true)
-                dialog.setContentView(actionBinding.root)
                 dialog.show()
             }
 
