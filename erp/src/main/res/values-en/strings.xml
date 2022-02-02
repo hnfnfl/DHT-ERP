@@ -71,4 +71,6 @@
     <string name="icon_level_delete">level delete button icon</string>
     <string name="level_delete">Delete Level</string>
     <string name="level_name">Level Name</string>
+    <string name="confirm_delete_level_title">Confirm Delete Level</string>
+    <string name="confirm_delete_level_desc">Are you sure you want to delete the %1$s level?</string>
 </resources>

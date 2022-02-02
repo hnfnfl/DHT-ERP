@@ -83,4 +83,18 @@ interface DataService {
         @Field("idlevel") idlevel: String,
         @Header("Authorization") tokenAuth: String
     ): Call<LevelResponse>
+
+    @FormUrlEncoded
+    @POST("main/insertLevel")
+    fun insertLevel(
+        @Field("level") level: String,
+        @Header("Authorization") tokenAuth: String
+    ): Call<DefaultResponse>
+
+    @FormUrlEncoded
+    @POST("main/deleteLevel")
+    fun deleteLevel(
+        @Field("idlevel") idlevel: String,
+        @Header("Authorization") tokenAuth: String
+    ): Call<DefaultResponse>
 }
