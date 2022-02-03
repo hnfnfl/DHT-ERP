@@ -83,5 +83,6 @@
     <string name="level_name">Nama Level</string>
     <string name="confirm_delete_level_title">Konfirmasi Hapus Level</string>
     <string name="confirm_delete_level_desc">Apakah Anda yakin ingin menghapus level %1$s</string>
+    <string name="customer">Pelanggan</string>
 
 </resources>

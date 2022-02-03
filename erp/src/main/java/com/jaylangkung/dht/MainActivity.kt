@@ -30,11 +30,12 @@ import com.mikepenz.materialdrawer.model.interfaces.*
 import com.mikepenz.materialdrawer.util.*
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
 import es.dmoral.toasty.Toasty
-import okio.ArrayIndexOutOfBoundsException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -297,4 +298,15 @@ class MainActivity : AppCompatActivity() {
         mDialog.show()
     }
 
+//    private fun insertJsonObject() {
+//        val data: MutableList<JSONObject> = ArrayList<JSONObject>()
+//        for (i in 0..1) {
+//            val obj = JSONObject()
+//            obj.put("id", i)
+//            obj.put("parameter", "test")
+//            obj.put("value", "anjay")
+//            data.add(obj)
+//        }
+//        Log.e("json data", data.toString())
+//    }
 }
