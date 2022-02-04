@@ -83,4 +83,7 @@
     <string name="isinsert">isinsert</string>
     <string name="isupdate">isupdate</string>
     <string name="isdelete">isdelete</string>
+    <string name="view_access_read">Read</string>
+    <string name="view_access_delete">Delete</string>
+    <string name="admin_department">Department : %1$s</string>
 </resources>

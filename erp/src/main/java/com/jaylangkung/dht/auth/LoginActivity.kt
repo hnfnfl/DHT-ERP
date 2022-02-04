@@ -83,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
                             myPreferences.setValue(Constants.USER_IDLEVEL, response.body()!!.data[0].idlevel)
                             myPreferences.setValue(Constants.USER_LEVEL, response.body()!!.data[0].level)
                             myPreferences.setValue(Constants.USER_IDDEPARTEMEN, response.body()!!.data[0].iddepartemen)
+                            myPreferences.setValue(Constants.USER_DEPARTEMEN, response.body()!!.data[0].departemen)
                             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                             finish()
                         }

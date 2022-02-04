@@ -14,4 +14,5 @@ object Constants {
     const val USER_IDLEVEL = "user_idlevel"
     const val USER_LEVEL = "level"
     const val USER_IDDEPARTEMEN = "iddepartemen"
+    const val USER_DEPARTEMEN = "departemen"
 }

@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.administrator.admin.AdminActivity
+import com.jaylangkung.dht.administrator.admin.EditProfileActivity
 import com.jaylangkung.dht.administrator.level.LevelActivity
 import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
@@ -30,7 +31,6 @@ import com.mikepenz.materialdrawer.model.interfaces.*
 import com.mikepenz.materialdrawer.util.*
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
 import es.dmoral.toasty.Toasty
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -203,7 +203,18 @@ class MainActivity : AppCompatActivity() {
                                 6L -> intent = Intent(this@MainActivity, LevelActivity::class.java)
                                 7L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 8L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                9L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+                                9L -> intent = Intent(this@MainActivity, EditProfileActivity::class.java)
+                                    .apply {
+                                        putExtra(EditProfileActivity.idadmin, myPreferences.getValue(Constants.USER_IDADMIN).toString())
+                                        putExtra(EditProfileActivity.level, myPreferences.getValue(Constants.USER_LEVEL).toString())
+                                        putExtra(EditProfileActivity.departemen, myPreferences.getValue(Constants.USER_DEPARTEMEN).toString())
+                                        putExtra(EditProfileActivity.nama, myPreferences.getValue(Constants.USER_NAMA).toString())
+                                        putExtra(EditProfileActivity.email, myPreferences.getValue(Constants.USER_EMAIL).toString())
+                                        putExtra(EditProfileActivity.alamat, myPreferences.getValue(Constants.USER_ALAMAT).toString())
+                                        putExtra(EditProfileActivity.telp, myPreferences.getValue(Constants.USER_TELP).toString())
+                                        putExtra(EditProfileActivity.img, myPreferences.getValue(Constants.FOTO_PATH).toString())
+                                        putExtra(EditProfileActivity.from, "MainActivity")
+                                    }
                                 10L -> Log.d("menu", drawerItem.identifier.toString())
                                 11L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 12L -> Log.d("menu", drawerItem.identifier.toString())
@@ -266,6 +277,7 @@ class MainActivity : AppCompatActivity() {
                 myPreferences.setValue(Constants.USER_IDLEVEL, "")
                 myPreferences.setValue(Constants.USER_LEVEL, "")
                 myPreferences.setValue(Constants.USER_IDDEPARTEMEN, "")
+                myPreferences.setValue(Constants.USER_DEPARTEMEN, "")
 
                 service.logout(idadmin).enqueue(object : Callback<DefaultResponse> {
                     override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
@@ -294,7 +306,6 @@ class MainActivity : AppCompatActivity() {
 
             }
             .build()
-
         mDialog.show()
     }
 

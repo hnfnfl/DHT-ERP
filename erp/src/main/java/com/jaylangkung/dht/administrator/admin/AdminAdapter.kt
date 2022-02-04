@@ -31,9 +31,8 @@ class AdminAdapter : RecyclerView.Adapter<AdminAdapter.ItemHolder>() {
     class ItemHolder(private val binding: ItemAdminBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: AdminEntity) {
             with(binding) {
-                tvAdminNameLevel.text = itemView.context.getString(
-                    R.string.admin_name_level, item.nama, item.level
-                )
+                tvAdminNameLevel.text = itemView.context.getString(R.string.admin_name_level, item.nama, item.level)
+                tvProfileDepartment.text = itemView.context.getString(R.string.admin_department, item.departemen)
                 tvProfileEmail.text = item.email
                 tvProfilePhone.text = item.telp
                 Glide.with(itemView.context)

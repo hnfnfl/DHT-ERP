@@ -14,6 +14,7 @@ import com.example.e_kan.utils.FileUtils
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityEditProfileBinding
 import com.jaylangkung.dht.retrofit.DataService
@@ -53,6 +54,7 @@ class EditProfileActivity : AppCompatActivity() {
         const val alamat = "alamat"
         const val telp = "telp"
         const val img = "img"
+        const val from = "context"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +71,6 @@ class EditProfileActivity : AppCompatActivity() {
         val alamat = intent.getStringExtra(alamat).toString()
         val telp = intent.getStringExtra(telp).toString()
         val img = intent.getStringExtra(img).toString()
-
 
         binding.btnBack.setOnClickListener {
             onBackPressed()
@@ -143,8 +144,14 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@EditProfileActivity, AdminActivity::class.java))
-        finish()
+        val from = intent.getStringExtra(from).toString()
+        if (from == "AdminActivity") {
+            startActivity(Intent(this@EditProfileActivity, AdminActivity::class.java))
+            finish()
+        } else if (from == "MainActivity") {
+            startActivity(Intent(this@EditProfileActivity, MainActivity::class.java))
+            finish()
+        }
     }
 
     private fun getSpinnerData(tokenAuth: String, level: String, departemen: String) {

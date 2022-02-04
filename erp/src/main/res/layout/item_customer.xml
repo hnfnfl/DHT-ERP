@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_ethernet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,64 +16,40 @@
         android:orientation="horizontal"
         android:padding="12dp">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/img_admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="100dp"
-            tools:src="@drawable/ic_profile" />
-
         <TextView
-            android:id="@+id/tv_admin_name_level"
+            android:id="@+id/tv_customer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/admin_name_level"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/img_admin"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_profile_email"
+            android:id="@+id/tv_customer_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="sans-serif"
             android:text=""
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/img_admin"
-            app:layout_constraintTop_toBottomOf="@+id/tv_admin_name_level" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_customer_name" />
 
         <TextView
-            android:id="@+id/tv_profile_phone"
+            android:id="@+id/tv_customer_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="sans-serif"
             android:text=""
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/img_admin"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profile_email" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/button_dropdown"
-            android:src="@drawable/ic_dropdown"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/md_grey_600" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_customer_address" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

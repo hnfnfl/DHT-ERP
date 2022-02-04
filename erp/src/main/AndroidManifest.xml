@@ -26,7 +26,7 @@
             android:name=".administrator.level.ViewAccessActivity"
             android:exported="false" />
         <activity
-            android:name=".master_design.CustomerActivity"
+            android:name=".master_design.customer.CustomerActivity"
             android:exported="false" />
         <activity
             android:name=".administrator.level.LevelActivity"

@@ -95,5 +95,6 @@
     <string name="isinsert">isinsert</string>
     <string name="isupdate">isupdate</string>
     <string name="isdelete">isdelete</string>
+    <string name="admin_department">Departemen : %1$s</string>
 
 </resources>

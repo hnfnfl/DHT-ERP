@@ -1,10 +1,7 @@
 package com.jaylangkung.dht.retrofit
 
 import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
-import com.jaylangkung.dht.retrofit.response.AdminResponse
-import com.jaylangkung.dht.retrofit.response.DataSpinnerResponse
-import com.jaylangkung.dht.retrofit.response.LevelResponse
-import com.jaylangkung.dht.retrofit.response.MenuResponse
+import com.jaylangkung.dht.retrofit.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -105,4 +102,9 @@ interface DataService {
         @Field("idlevel") idlevel: String,
         @Header("Authorization") tokenAuth: String
     ): Call<DefaultResponse>
+
+    @GET("main/getCustomer")
+    fun getCustomer(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<CustomerResponse>
 }

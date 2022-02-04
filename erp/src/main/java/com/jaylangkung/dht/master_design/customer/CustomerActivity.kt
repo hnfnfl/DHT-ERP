@@ -1,4 +1,4 @@
-package com.jaylangkung.dht.master_design
+package com.jaylangkung.dht.master_design.customer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

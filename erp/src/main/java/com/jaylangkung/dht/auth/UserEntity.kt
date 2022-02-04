@@ -11,4 +11,5 @@ class UserEntity(
     var idlevel: String = "",
     var level: String = "",
     var iddepartemen: String = "",
+    var departemen: String = "",
 )

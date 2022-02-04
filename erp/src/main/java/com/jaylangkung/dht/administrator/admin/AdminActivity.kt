@@ -72,6 +72,7 @@ class AdminActivity : AppCompatActivity() {
                             putExtra(EditProfileActivity.alamat, alamat)
                             putExtra(EditProfileActivity.telp, telp)
                             putExtra(EditProfileActivity.img, img)
+                            putExtra(EditProfileActivity.from, "AdminActivity")
                         })
                     finish()
                     dialog.dismiss()
