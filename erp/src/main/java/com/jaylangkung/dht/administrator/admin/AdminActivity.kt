@@ -145,7 +145,7 @@ class AdminActivity : AppCompatActivity() {
                         binding.loadingAnim.visibility = View.GONE
                         binding.empty.visibility = View.GONE
                         listData = response.body()!!.data
-                        adminAdapter.setAdminItem(listData)
+                        adminAdapter.setItem(listData)
                         adminAdapter.notifyItemRangeChanged(0, listData.size)
 
                         with(binding.rvAdmin) {
@@ -158,7 +158,7 @@ class AdminActivity : AppCompatActivity() {
                         binding.empty.visibility = View.VISIBLE
                         binding.loadingAnim.visibility = View.GONE
                         listData.clear()
-                        adminAdapter.setAdminItem(listData)
+                        adminAdapter.setItem(listData)
                         adminAdapter.notifyItemRangeChanged(0, listData.size)
                     }
                 } else {
@@ -215,7 +215,7 @@ class AdminActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
                         listData.removeAt(position)
-                        adminAdapter.setAdminItem(listData)
+                        adminAdapter.setItem(listData)
                         adminAdapter.notifyItemRemoved(position)
                         binding.loadingAnim.visibility = View.GONE
                         dialogInterface.dismiss()

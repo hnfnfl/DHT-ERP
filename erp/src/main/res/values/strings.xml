@@ -83,6 +83,17 @@
     <string name="level_name">Nama Level</string>
     <string name="confirm_delete_level_title">Konfirmasi Hapus Level</string>
     <string name="confirm_delete_level_desc">Apakah Anda yakin ingin menghapus level %1$s</string>
+    <string name="level_show_access">Lihat Hak Akses</string>
     <string name="customer">Pelanggan</string>
+    <string name="view_access_level">Hak Akses Level %1$s</string>
+    <string name="view_access_modul">Modul</string>
+    <string name="view_access_read">Read</string>
+    <string name="view_access_insert">Insert</string>
+    <string name="view_access_update">Update</string>
+    <string name="view_access_delete">Delete</string>
+    <string name="issread">issread</string>
+    <string name="isinsert">isinsert</string>
+    <string name="isupdate">isupdate</string>
+    <string name="isdelete">isdelete</string>
 
 </resources>

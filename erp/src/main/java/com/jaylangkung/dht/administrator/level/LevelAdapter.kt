@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.databinding.ItemLevelBinding
 
-class LevelAdapter : RecyclerView.Adapter<LevelAdapter.LevelItemHolder>() {
+class LevelAdapter : RecyclerView.Adapter<LevelAdapter.ItemHolder>() {
 
-    private var listData = ArrayList<LevelEntity>()
+    private var list = ArrayList<LevelEntity>()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setLevelItem(levelItem: List<LevelEntity>?) {
-        if (levelItem == null) return
-        listData.clear()
-        listData.addAll(levelItem)
-        notifyItemRangeChanged(0, levelItem.size)
+    fun setItem(item: List<LevelEntity>?) {
+        if (item == null) return
+        list.clear()
+        list.addAll(item)
+        notifyItemRangeChanged(0, item.size)
     }
 
     interface OnItemClickCallback {
@@ -25,28 +25,29 @@ class LevelAdapter : RecyclerView.Adapter<LevelAdapter.LevelItemHolder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class LevelItemHolder(private val binding: ItemLevelBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(levelItem: LevelEntity) {
+    class ItemHolder(private val binding: ItemLevelBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: LevelEntity) {
             with(binding) {
-                tvLevel.text = levelItem.level
+                tvLevel.text = item.level
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LevelItemHolder {
-        val itemLevelBinding = ItemLevelBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return LevelItemHolder(itemLevelBinding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
+        val itemBinding = ItemLevelBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ItemHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: LevelItemHolder, position: Int) {
-        val vendorItem = listData[position]
-        holder.bind(vendorItem)
+    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        val item = list[position]
+        holder.bind(item)
+
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listData, position)
+            onItemClickCallback.onItemClicked(list, position)
         }
     }
 
-    override fun getItemCount(): Int = listData.size
+    override fun getItemCount(): Int = list.size
 }
 
 

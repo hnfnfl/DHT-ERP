@@ -8,16 +8,16 @@ import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemAdminBinding
 
-class AdminAdapter : RecyclerView.Adapter<AdminAdapter.AdminItemHolder>() {
+class AdminAdapter : RecyclerView.Adapter<AdminAdapter.ItemHolder>() {
 
-    private var listData = ArrayList<AdminEntity>()
+    private var list = ArrayList<AdminEntity>()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setAdminItem(adminItem: List<AdminEntity>?) {
-        if (adminItem == null) return
-        listData.clear()
-        listData.addAll(adminItem)
-        notifyItemRangeChanged(0, adminItem.size)
+    fun setItem(item: List<AdminEntity>?) {
+        if (item == null) return
+        list.clear()
+        list.addAll(item)
+        notifyItemRangeChanged(0, item.size)
     }
 
     interface OnItemClickCallback {
@@ -28,16 +28,16 @@ class AdminAdapter : RecyclerView.Adapter<AdminAdapter.AdminItemHolder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class AdminItemHolder(private val binding: ItemAdminBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(adminItem: AdminEntity) {
+    class ItemHolder(private val binding: ItemAdminBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: AdminEntity) {
             with(binding) {
                 tvAdminNameLevel.text = itemView.context.getString(
-                    R.string.admin_name_level, adminItem.nama, adminItem.level
+                    R.string.admin_name_level, item.nama, item.level
                 )
-                tvProfileEmail.text = adminItem.email
-                tvProfilePhone.text = adminItem.telp
+                tvProfileEmail.text = item.email
+                tvProfilePhone.text = item.telp
                 Glide.with(itemView.context)
-                    .load(adminItem.img)
+                    .load(item.img)
                     .apply(RequestOptions().override(150))
                     .placeholder(R.drawable.ic_profile)
                     .error(R.drawable.ic_profile)
@@ -46,20 +46,21 @@ class AdminAdapter : RecyclerView.Adapter<AdminAdapter.AdminItemHolder>() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminItemHolder {
-        val itemAdminBinding = ItemAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AdminItemHolder(itemAdminBinding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
+        val itemBinding = ItemAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ItemHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: AdminItemHolder, position: Int) {
-        val vendorItem = listData[position]
-        holder.bind(vendorItem)
+    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        val item = list[position]
+        holder.bind(item)
+
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listData, position)
+            onItemClickCallback.onItemClicked(list, position)
         }
     }
 
-    override fun getItemCount(): Int = listData.size
+    override fun getItemCount(): Int = list.size
 }
 
 

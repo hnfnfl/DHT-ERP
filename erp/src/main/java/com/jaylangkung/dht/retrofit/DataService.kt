@@ -92,6 +92,14 @@ interface DataService {
     ): Call<DefaultResponse>
 
     @FormUrlEncoded
+    @POST("main/updateLevel")
+    fun updateLevel(
+        @Field("idlevel") idlevel: String,
+        @Field("level") level: String,
+        @Header("Authorization") tokenAuth: String
+    ): Call<DefaultResponse>
+
+    @FormUrlEncoded
     @POST("main/deleteLevel")
     fun deleteLevel(
         @Field("idlevel") idlevel: String,

@@ -5,7 +5,7 @@ class LevelEntity(
     var level: String = "",
     var idhakakses: String = "",
     var idmodul: String = "",
-    var modul: String = "",
+    var menu: String = "",
     var isread: String = "",
     var isinsert: String = "",
     var isupdate: String = "",

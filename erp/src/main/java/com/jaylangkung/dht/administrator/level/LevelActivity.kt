@@ -20,6 +20,7 @@ import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
 import com.jaylangkung.dht.utils.MySharedPreferences
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
+import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,7 +39,6 @@ class LevelActivity : AppCompatActivity() {
         binding = ActivityLevelBinding.inflate(layoutInflater)
         addlevelbinding = BottomSheetLevelAddBinding.inflate(layoutInflater)
         actionBinding = BottomSheetLevelActionBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         myPreferences = MySharedPreferences(this@LevelActivity)
         levelAdapter = LevelAdapter()
@@ -53,12 +53,12 @@ class LevelActivity : AppCompatActivity() {
 
         val dialog = BottomSheetDialog(this@LevelActivity)
         val dialogAddLevel = BottomSheetDialog(this@LevelActivity)
+        val btnSave = addlevelbinding.btnSaveLevel
         dialog.setContentView(actionBinding.root)
         dialogAddLevel.setContentView(addlevelbinding.root)
 
         binding.fabAddLevel.setOnClickListener {
             addlevelbinding.inputLevelName.setText("")
-            val btnSave = addlevelbinding.btnSaveLevel
 
             btnSave.setOnClickListener {
                 val level = addlevelbinding.inputLevelName.text.toString()
@@ -76,10 +76,14 @@ class LevelActivity : AppCompatActivity() {
             override fun onItemClicked(data: ArrayList<LevelEntity>, position: Int) {
                 actionBinding.llEdit.setOnClickListener {
                     addlevelbinding.inputLevelName.setText(data[position].level)
-                    val btnSave = addlevelbinding.btnSaveLevel
 
                     btnSave.setOnClickListener {
-                        val newLevelName = addlevelbinding.inputLevelName.text.toString()
+                        val idlevel = data[position].idlevel
+                        val level = addlevelbinding.inputLevelName.text.toString()
+                        if (validate()) {
+                            binding.loadingAnim.visibility = View.VISIBLE
+                            updateLevel(idlevel, level, tokenAuth, dialogAddLevel)
+                        }
                         dialogAddLevel.dismiss()
                     }
 
@@ -88,12 +92,18 @@ class LevelActivity : AppCompatActivity() {
                     dialogAddLevel.show()
                 }
 
-                actionBinding.llEditAccess.setOnClickListener {
-
+                actionBinding.llShowAccess.setOnClickListener {
+                    val idlevel = data[position].idlevel
+                    startActivity(Intent(this@LevelActivity, ViewAccessActivity::class.java)
+                        .apply {
+                            putExtra(ViewAccessActivity.idlevel, idlevel)
+                        })
+                    finish()
                     dialog.dismiss()
                 }
 
                 actionBinding.llDelete.setOnClickListener {
+                    val idlevel = data[position].idlevel
                     val deleteDialog = MaterialDialog.Builder(this@LevelActivity)
                         .setTitle(getString(R.string.confirm_delete_level_title))
                         .setMessage(getString(R.string.confirm_delete_level_desc, data[position].level))
@@ -104,6 +114,7 @@ class LevelActivity : AppCompatActivity() {
                         }
                         .setNegativeButton(getString(R.string.yes), R.drawable.ic_trash)
                         { dialogInterface, _ ->
+                            deleteLevel(idlevel, tokenAuth, dialogInterface, position)
                             dialogInterface.dismiss()
                         }
                         .build()
@@ -132,7 +143,7 @@ class LevelActivity : AppCompatActivity() {
                         binding.loadingAnim.visibility = View.GONE
                         binding.empty.visibility = View.GONE
                         listData = response.body()!!.data
-                        levelAdapter.setLevelItem(listData)
+                        levelAdapter.setItem(listData)
                         levelAdapter.notifyItemRangeChanged(0, listData.size)
 
                         with(binding.rvLevel) {
@@ -145,7 +156,7 @@ class LevelActivity : AppCompatActivity() {
                         binding.empty.visibility = View.VISIBLE
                         binding.loadingAnim.visibility = View.GONE
                         listData.clear()
-                        levelAdapter.setLevelItem(listData)
+                        levelAdapter.setItem(listData)
                         levelAdapter.notifyItemRangeChanged(0, listData.size)
                     }
                 } else {
@@ -172,8 +183,7 @@ class LevelActivity : AppCompatActivity() {
             addlevelbinding.inputLevelName.error = getString(R.string.level_cant_empty)
             addlevelbinding.inputLevelName.requestFocus()
             false
-        }
-        else true
+        } else true
     }
 
     private fun insertLevel(level: String, tokenAuth: String, dialog: BottomSheetDialog) {
@@ -203,4 +213,63 @@ class LevelActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun updateLevel(idlevel: String, level: String, tokenAuth: String, dialog: BottomSheetDialog) {
+        val service = RetrofitClient().apiRequest().create(DataService::class.java)
+        service.updateLevel(idlevel, level, tokenAuth).enqueue(object : Callback<DefaultResponse> {
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                        getLevel(tokenAuth)
+                        dialog.dismiss()
+                    }
+                } else {
+                    binding.loadingAnim.visibility = View.GONE
+                    ErrorHandler().responseHandler(
+                        this@LevelActivity,
+                        "updateLevel | onResponse", response.message()
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                binding.loadingAnim.visibility = View.GONE
+                ErrorHandler().responseHandler(
+                    this@LevelActivity,
+                    "updateLevel | onFailure", t.message.toString()
+                )
+            }
+        })
+    }
+
+    private fun deleteLevel(idlevel: String, tokenAuth: String, dialogInterface: DialogInterface, position: Int) {
+        val service = RetrofitClient().apiRequest().create(DataService::class.java)
+        service.deleteLevel(idlevel, tokenAuth).enqueue(object : Callback<DefaultResponse> {
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                        listData.removeAt(position)
+                        levelAdapter.setItem(listData)
+                        levelAdapter.notifyItemRemoved(position)
+                        dialogInterface.dismiss()
+                    }
+                } else {
+                    binding.loadingAnim.visibility = View.GONE
+                    ErrorHandler().responseHandler(
+                        this@LevelActivity,
+                        "deleteLevel | onResponse", response.message()
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                binding.loadingAnim.visibility = View.GONE
+                ErrorHandler().responseHandler(
+                    this@LevelActivity,
+                    "deleteLevel | onFailure", t.message.toString()
+                )
+            }
+        })
+    }
+
 }
