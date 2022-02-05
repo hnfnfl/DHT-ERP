@@ -96,5 +96,9 @@
     <string name="isupdate">isupdate</string>
     <string name="isdelete">isdelete</string>
     <string name="admin_department">Departemen : %1$s</string>
+    <string name="customer_additional_holder">- %1$s : %2$s</string>
+    <string name="additional_information">Informasi Tambahan</string>
+    <string name="customer_address">Alamat : %1$s</string>
+    <string name="customer_phone">Telp : %1$s</string>
 
 </resources>

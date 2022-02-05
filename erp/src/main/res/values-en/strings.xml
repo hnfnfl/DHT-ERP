@@ -86,4 +86,8 @@
     <string name="view_access_read">Read</string>
     <string name="view_access_delete">Delete</string>
     <string name="admin_department">Department : %1$s</string>
+    <string name="customer_additional_holder">- %1$s : %2$s</string>
+    <string name="additional_information">Additional information</string>
+    <string name="customer_address">Address : %1$s</string>
+    <string name="customer_phone">Phone : %1$s</string>
 </resources>

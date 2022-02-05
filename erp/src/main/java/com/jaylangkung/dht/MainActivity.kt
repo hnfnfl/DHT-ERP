@@ -18,6 +18,7 @@ import com.jaylangkung.dht.administrator.level.LevelActivity
 import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
+import com.jaylangkung.dht.master_design.customer.CustomerActivity
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.response.MenuResponse
@@ -216,7 +217,7 @@ class MainActivity : AppCompatActivity() {
                                         putExtra(EditProfileActivity.from, "MainActivity")
                                     }
                                 10L -> Log.d("menu", drawerItem.identifier.toString())
-                                11L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+                                11L -> intent = Intent(this@MainActivity, CustomerActivity::class.java)
                                 12L -> Log.d("menu", drawerItem.identifier.toString())
                                 13L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 14L -> intent = Intent(this@MainActivity, MainActivity::class.java)
