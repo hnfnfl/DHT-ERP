@@ -124,6 +124,7 @@ class MainActivity : AppCompatActivity() {
             R.drawable.ic_folder, //14
             R.drawable.ic_process, //15
             R.drawable.ic_bug, //16
+            R.drawable.ic_administrator, //17
         )
 
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
