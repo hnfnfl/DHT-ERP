@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_additional_text"
-            tools:listitem="@layout/item_customer_additional" />
+            tools:listitem="@layout/item_additional" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

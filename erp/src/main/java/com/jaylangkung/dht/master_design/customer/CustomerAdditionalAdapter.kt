@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
-import com.jaylangkung.dht.databinding.ItemCustomerAdditionalBinding
+import com.jaylangkung.dht.databinding.ItemAdditionalBinding
 import com.jaylangkung.dht.master_design.AdditionalEntity
 
 class CustomerAdditionalAdapter : RecyclerView.Adapter<CustomerAdditionalAdapter.ItemHolder>() {
@@ -18,7 +18,7 @@ class CustomerAdditionalAdapter : RecyclerView.Adapter<CustomerAdditionalAdapter
         notifyItemRangeChanged(0, item.size)
     }
 
-    class ItemHolder(private val binding: ItemCustomerAdditionalBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ItemHolder(private val binding: ItemAdditionalBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: AdditionalEntity) {
             with(binding) {
                 tvAdditional.text = itemView.context.getString(
@@ -29,7 +29,7 @@ class CustomerAdditionalAdapter : RecyclerView.Adapter<CustomerAdditionalAdapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        val itemBinding = ItemCustomerAdditionalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemBinding = ItemAdditionalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemHolder(itemBinding)
     }
 

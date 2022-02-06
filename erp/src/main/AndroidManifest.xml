@@ -23,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
         <activity
+            android:name=".master_design.supplier.SupplierActivity"
+            android:exported="false" />
+        <activity
             android:name=".administrator.level.ViewAccessActivity"
             android:exported="false" />
         <activity
