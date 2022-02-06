@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemCustomerBinding
 import com.jaylangkung.dht.master_design.AdditionalEntity
+import com.jaylangkung.dht.master_design.AdditionalAdapter
 
 class CustomerAdapter : RecyclerView.Adapter<CustomerAdapter.ItemHolder>() {
 
@@ -22,11 +23,11 @@ class CustomerAdapter : RecyclerView.Adapter<CustomerAdapter.ItemHolder>() {
     }
 
     class ItemHolder(private val binding: ItemCustomerBinding) : RecyclerView.ViewHolder(binding.root) {
-        private lateinit var customerAdditionalAdapter: CustomerAdditionalAdapter
+        private lateinit var additionalAdapter: AdditionalAdapter
         private var listData: ArrayList<AdditionalEntity> = arrayListOf()
 
         fun bind(item: CustomerEntity) {
-            customerAdditionalAdapter = CustomerAdditionalAdapter()
+            additionalAdapter = AdditionalAdapter()
             with(binding) {
                 tvCustomerName.text = item.nama
                 tvCustomerAddress.text = itemView.context.getString(R.string.customer_address, item.alamat)
@@ -36,14 +37,14 @@ class CustomerAdapter : RecyclerView.Adapter<CustomerAdapter.ItemHolder>() {
                     tvAdditionalText.visibility = View.VISIBLE
                     rvCustomerAdditional.visibility = View.VISIBLE
                     listData = item.additional
-                    customerAdditionalAdapter.setItem(listData)
-                    customerAdditionalAdapter.notifyItemRangeChanged(0, listData.size)
+                    additionalAdapter.setItem(listData)
+                    additionalAdapter.notifyItemRangeChanged(0, listData.size)
 
                     with(binding.rvCustomerAdditional) {
                         layoutManager = LinearLayoutManager(itemView.context)
                         itemAnimator = DefaultItemAnimator()
                         setHasFixedSize(true)
-                        adapter = customerAdditionalAdapter
+                        adapter = additionalAdapter
                     }
                 }
             }

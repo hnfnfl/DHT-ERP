@@ -1,13 +1,12 @@
-package com.jaylangkung.dht.master_design.customer
+package com.jaylangkung.dht.master_design
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemAdditionalBinding
-import com.jaylangkung.dht.master_design.AdditionalEntity
 
-class CustomerAdditionalAdapter : RecyclerView.Adapter<CustomerAdditionalAdapter.ItemHolder>() {
+class AdditionalAdapter : RecyclerView.Adapter<AdditionalAdapter.ItemHolder>() {
 
     private var list = ArrayList<AdditionalEntity>()
 
