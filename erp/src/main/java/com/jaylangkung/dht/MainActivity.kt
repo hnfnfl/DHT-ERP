@@ -19,6 +19,7 @@ import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
 import com.jaylangkung.dht.master_design.customer.CustomerActivity
+import com.jaylangkung.dht.master_design.supplier.SupplierActivity
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.response.MenuResponse
@@ -223,6 +224,7 @@ class MainActivity : AppCompatActivity() {
                                 14L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 15L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 16L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+                                17L -> intent = Intent(this@MainActivity, SupplierActivity::class.java)
 
                                 99L -> logout(idadmin)
                                 else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()

@@ -100,5 +100,7 @@
     <string name="additional_information">Informasi Tambahan</string>
     <string name="customer_address">Alamat : %1$s</string>
     <string name="customer_phone">Telp : %1$s</string>
+    <string name="supplier_type">Jenis : %1$s</string>
+    <string name="supplier">Pemasok</string>
 
 </resources>

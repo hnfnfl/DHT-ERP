@@ -90,4 +90,6 @@
     <string name="additional_information">Additional information</string>
     <string name="customer_address">Address : %1$s</string>
     <string name="customer_phone">Phone : %1$s</string>
+    <string name="supplier_type">Type : %1$s</string>
+    <string name="supplier">Supplier</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.jaylangkung.dht.master_design.customer
+package com.jaylangkung.dht.master_design.supplier
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
-import com.jaylangkung.dht.databinding.ActivityCustomerBinding
+import com.jaylangkung.dht.databinding.ActivitySupplierBinding
 import com.jaylangkung.dht.retrofit.DataService
-import com.jaylangkung.dht.retrofit.response.CustomerResponse
+import com.jaylangkung.dht.retrofit.response.SupplierResponse
 import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
 import com.jaylangkung.dht.utils.MySharedPreferences
@@ -19,19 +19,20 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CustomerActivity : AppCompatActivity() {
+class SupplierActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCustomerBinding
+    private lateinit var binding: ActivitySupplierBinding
     private lateinit var myPreferences: MySharedPreferences
-    private lateinit var customerAdapter: CustomerAdapter
-    private var listData: ArrayList<CustomerEntity> = arrayListOf()
+    private lateinit var supplierAdapter: SupplierAdapter
+    private var listData: ArrayList<SupplierEntity> = arrayListOf()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCustomerBinding.inflate(layoutInflater)
+        binding = ActivitySupplierBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        myPreferences = MySharedPreferences(this@CustomerActivity)
-        customerAdapter = CustomerAdapter()
+        myPreferences = MySharedPreferences(this@SupplierActivity)
+        supplierAdapter = SupplierAdapter()
 
         val tokenAuth = getString(R.string.token_auth, myPreferences.getValue(Constants.TokenAuth).toString())
 
@@ -39,54 +40,53 @@ class CustomerActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        getCustomer(tokenAuth)
-
+        getSupplier(tokenAuth)
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@CustomerActivity, MainActivity::class.java))
+        startActivity(Intent(this@SupplierActivity, MainActivity::class.java))
         finish()
     }
 
-    private fun getCustomer(tokenAuth: String) {
+    private fun getSupplier(tokenAuth: String) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
-        service.getCustomer(tokenAuth).enqueue(object : Callback<CustomerResponse> {
-            override fun onResponse(call: Call<CustomerResponse>, response: Response<CustomerResponse>) {
+        service.getSupplier(tokenAuth).enqueue(object : Callback<SupplierResponse> {
+            override fun onResponse(call: Call<SupplierResponse>, response: Response<SupplierResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
                         binding.loadingAnim.visibility = View.GONE
                         binding.empty.visibility = View.GONE
                         listData = response.body()!!.data
-                        customerAdapter.setItem(listData)
-                        customerAdapter.notifyItemRangeChanged(0, listData.size)
+                        supplierAdapter.setItem(listData)
+                        supplierAdapter.notifyItemRangeChanged(0, listData.size)
 
-                        with(binding.rvCustomer) {
-                            layoutManager = LinearLayoutManager(this@CustomerActivity)
+                        with(binding.rvSupplier) {
+                            layoutManager = LinearLayoutManager(this@SupplierActivity)
                             itemAnimator = DefaultItemAnimator()
                             setHasFixedSize(true)
-                            adapter = customerAdapter
+                            adapter = supplierAdapter
                         }
                     } else if (response.body()!!.status == "empty") {
                         binding.empty.visibility = View.VISIBLE
                         binding.loadingAnim.visibility = View.GONE
                         listData.clear()
-                        customerAdapter.setItem(listData)
-                        customerAdapter.notifyItemRangeChanged(0, listData.size)
+                        supplierAdapter.setItem(listData)
+                        supplierAdapter.notifyItemRangeChanged(0, listData.size)
                     }
                 } else {
                     binding.loadingAnim.visibility = View.GONE
                     ErrorHandler().responseHandler(
-                        this@CustomerActivity,
-                        "getCustomer | onResponse", response.message()
+                        this@SupplierActivity,
+                        "getSupplier | onResponse", response.message()
                     )
                 }
             }
 
-            override fun onFailure(call: Call<CustomerResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SupplierResponse>, t: Throwable) {
                 binding.loadingAnim.visibility = View.GONE
                 ErrorHandler().responseHandler(
-                    this@CustomerActivity,
-                    "getCustomer | onFailure", t.message.toString()
+                    this@SupplierActivity,
+                    "getSupplier | onFailure", t.message.toString()
                 )
             }
         })

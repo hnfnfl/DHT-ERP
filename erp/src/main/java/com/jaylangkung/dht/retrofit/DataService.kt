@@ -107,4 +107,9 @@ interface DataService {
     fun getCustomer(
         @Header("Authorization") tokenAuth: String,
     ): Call<CustomerResponse>
+
+    @GET("main/getSupplier")
+    fun getSupplier(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<SupplierResponse>
 }
