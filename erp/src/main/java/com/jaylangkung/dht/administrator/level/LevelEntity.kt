@@ -10,5 +10,4 @@ class LevelEntity(
     var isinsert: String = "",
     var isupdate: String = "",
     var isdelete: String = "",
-
-    )
+)

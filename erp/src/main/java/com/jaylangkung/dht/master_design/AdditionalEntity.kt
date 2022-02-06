@@ -1,4 +1,4 @@
-package com.jaylangkung.dht.master_design.customer
+package com.jaylangkung.dht.master_design
 
 class AdditionalEntity(
     var id: String = "",

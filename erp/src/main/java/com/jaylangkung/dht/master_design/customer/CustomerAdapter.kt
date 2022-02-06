@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemCustomerBinding
+import com.jaylangkung.dht.master_design.AdditionalEntity
 
 class CustomerAdapter : RecyclerView.Adapter<CustomerAdapter.ItemHolder>() {
 

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemCustomerAdditionalBinding
+import com.jaylangkung.dht.master_design.AdditionalEntity
 
 class CustomerAdditionalAdapter : RecyclerView.Adapter<CustomerAdditionalAdapter.ItemHolder>() {
 
