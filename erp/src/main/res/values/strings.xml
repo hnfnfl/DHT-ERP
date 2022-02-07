@@ -111,5 +111,6 @@
     <string name="product_composition">Komposisi Produk</string>
     <string name="product_goods">Barang</string>
     <string name="product_requirement">Kebutuhan</string>
+    <string name="shipment">Pengiriman</string>
 
 </resources>

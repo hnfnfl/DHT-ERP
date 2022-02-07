@@ -1,6 +1,7 @@
 package com.jaylangkung.dht
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -19,7 +20,9 @@ import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
 import com.jaylangkung.dht.master_design.customer.CustomerActivity
+import com.jaylangkung.dht.master_design.goods.GoodsActivity
 import com.jaylangkung.dht.master_design.product.ProductActivity
+import com.jaylangkung.dht.master_design.shipment.ShipmentActivity
 import com.jaylangkung.dht.master_design.supplier.SupplierActivity
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
@@ -200,16 +203,17 @@ class MainActivity : AppCompatActivity() {
 
                         binding.slider.onDrawerItemClickListener = { _, drawerItem, _ ->
                             var intent: Intent? = null
+                            val context: Context = this@MainActivity
                             when (drawerItem.identifier) {
-                                1L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                2L -> intent = Intent(this@MainActivity, MainActivity::class.java)
+                                1L -> intent = Intent(context, MainActivity::class.java)
+                                2L -> intent = Intent(context, MainActivity::class.java)
                                 3L -> Log.d("menu", drawerItem.identifier.toString())
-                                4L -> intent = Intent(this@MainActivity, AdminActivity::class.java)
-                                5L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                6L -> intent = Intent(this@MainActivity, LevelActivity::class.java)
-                                7L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                8L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                9L -> intent = Intent(this@MainActivity, EditProfileActivity::class.java)
+                                4L -> intent = Intent(context, AdminActivity::class.java)
+                                5L -> intent = Intent(context, MainActivity::class.java)
+                                6L -> intent = Intent(context, LevelActivity::class.java)
+                                7L -> intent = Intent(context, MainActivity::class.java)
+                                8L -> intent = Intent(context, MainActivity::class.java)
+                                9L -> intent = Intent(context, EditProfileActivity::class.java)
                                     .apply {
                                         putExtra(EditProfileActivity.idadmin, myPreferences.getValue(Constants.USER_IDADMIN).toString())
                                         putExtra(EditProfileActivity.level, myPreferences.getValue(Constants.USER_LEVEL).toString())
@@ -222,17 +226,20 @@ class MainActivity : AppCompatActivity() {
                                         putExtra(EditProfileActivity.from, "MainActivity")
                                     }
                                 10L -> Log.d("menu", drawerItem.identifier.toString())
-                                11L -> intent = Intent(this@MainActivity, CustomerActivity::class.java)
+                                11L -> intent = Intent(context, CustomerActivity::class.java)
                                 12L -> Log.d("menu", drawerItem.identifier.toString())
-                                13L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                14L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                15L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                16L -> intent = Intent(this@MainActivity, MainActivity::class.java)
-                                17L -> intent = Intent(this@MainActivity, SupplierActivity::class.java)
-                                18L -> intent = Intent(this@MainActivity, ProductActivity::class.java)
+                                13L -> intent = Intent(context, MainActivity::class.java)
+                                14L -> intent = Intent(context, MainActivity::class.java)
+                                15L -> intent = Intent(context, MainActivity::class.java)
+                                16L -> intent = Intent(context, MainActivity::class.java)
+                                17L -> intent = Intent(context, SupplierActivity::class.java)
+                                18L -> intent = Intent(context, ProductActivity::class.java)
+
+                                24L -> intent = Intent(context, ShipmentActivity::class.java)
+                                25L -> intent = Intent(context, GoodsActivity::class.java)
 
                                 99L -> logout(idadmin)
-                                else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
+                                else -> Toasty.warning(context, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
                             }
 
                             if (intent != null) {

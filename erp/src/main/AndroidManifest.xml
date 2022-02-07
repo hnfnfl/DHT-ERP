@@ -23,6 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
         <activity
+            android:name=".master_design.goods.GoodsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".master_design.shipment.ShipmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".master_design.product.ProductActivity"
             android:exported="false" />
         <activity

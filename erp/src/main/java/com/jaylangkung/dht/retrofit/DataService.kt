@@ -117,4 +117,9 @@ interface DataService {
     fun getProduct(
         @Header("Authorization") tokenAuth: String,
     ): Call<ProductResponse>
+
+    @GET("main/getShipment")
+    fun getShipment(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<ShipmentResponse>
 }
