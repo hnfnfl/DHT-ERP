@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".master_design.shipment.ShipmentActivity">
+    tools:context=".master_design.goods.GoodsActivity">
 
     <LinearLayout
         android:id="@+id/ll_header"
@@ -33,14 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/shipment"
+            android:text="@string/goods"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_shipment"
+        android:id="@+id/rv_goods"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"

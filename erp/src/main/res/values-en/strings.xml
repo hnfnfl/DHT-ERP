@@ -101,4 +101,5 @@
     <string name="product_composition">Product composition</string>
     <string name="product_goods">Goods</string>
     <string name="product_requirement">Needs</string>
+    <string name="shipment">Shipment</string>
 </resources>

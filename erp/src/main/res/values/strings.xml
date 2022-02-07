@@ -112,5 +112,6 @@
     <string name="product_goods">Barang</string>
     <string name="product_requirement">Kebutuhan</string>
     <string name="shipment">Pengiriman</string>
+    <string name="goods">Barang</string>
 
 </resources>
