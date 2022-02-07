@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nama"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nilai"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="14sp" />
 

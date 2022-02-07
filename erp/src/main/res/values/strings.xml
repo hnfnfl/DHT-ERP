@@ -105,5 +105,11 @@
     <string name="product_name_category">%1$s (%2$s)</string>
     <string name="product">Produk</string>
     <string name="product_price">Rp %1$s</string>
+    <string name="product_specification">Spesifikasi produk</string>
+    <string name="specification_name">Nama</string>
+    <string name="specification_value">Nilai</string>
+    <string name="product_composition">Komposisi Produk</string>
+    <string name="product_goods">Barang</string>
+    <string name="product_requirement">Kebutuhan</string>
 
 </resources>

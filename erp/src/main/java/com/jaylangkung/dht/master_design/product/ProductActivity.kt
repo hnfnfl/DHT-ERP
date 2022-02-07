@@ -6,10 +6,13 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityProductBinding
+import com.jaylangkung.dht.databinding.BottomSheetProductDetailBinding
+import com.jaylangkung.dht.master_design.AdditionalEntity
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.response.ProductResponse
 import com.jaylangkung.dht.utils.Constants
@@ -22,9 +25,14 @@ import retrofit2.Response
 class ProductActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductBinding
+    private lateinit var detailBinding: BottomSheetProductDetailBinding
     private lateinit var myPreferences: MySharedPreferences
     private lateinit var productAdapter: ProductAdapter
+    private lateinit var specificationAdapter: SpecificationAdapter
+    private lateinit var compositionAdapter: CompositionAdapter
     private var listData: ArrayList<ProductEntity> = arrayListOf()
+    private var listSpesifikasi: ArrayList<AdditionalEntity> = arrayListOf()
+    private var listKomposisi: ArrayList<AdditionalEntity> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +49,43 @@ class ProductActivity : AppCompatActivity() {
 
         getProduct(tokenAuth)
 
-        productAdapter.setOnItemClickCallback(object : ProductAdapter.OnItemClickCallback{
+        productAdapter.setOnItemClickCallback(object : ProductAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<ProductEntity>, position: Int) {
+                detailBinding = BottomSheetProductDetailBinding.inflate(layoutInflater)
+                val dialog = BottomSheetDialog(this@ProductActivity)
+                specificationAdapter = SpecificationAdapter()
+                compositionAdapter = CompositionAdapter()
+
+                if (!data[position].spesifikasi.isNullOrEmpty()) {
+                    listSpesifikasi = data[position].spesifikasi
+                    specificationAdapter.setItem(listSpesifikasi)
+                    specificationAdapter.notifyItemRangeChanged(0, listData.size)
+
+                    with(detailBinding.rvSpecification) {
+                        layoutManager = LinearLayoutManager(this@ProductActivity)
+                        itemAnimator = DefaultItemAnimator()
+                        setHasFixedSize(true)
+                        adapter = specificationAdapter
+                    }
+                }
 
                 if (!data[position].komposisi.isNullOrEmpty()) {
+                    listKomposisi = data[position].komposisi
+                    compositionAdapter.setItem(listKomposisi)
+                    compositionAdapter.notifyItemRangeChanged(0, listData.size)
 
+                    with(detailBinding.rvComposition) {
+                        layoutManager = LinearLayoutManager(this@ProductActivity)
+                        itemAnimator = DefaultItemAnimator()
+                        setHasFixedSize(true)
+                        adapter = compositionAdapter
+                    }
                 }
-            }
 
+                dialog.setCancelable(true)
+                dialog.setContentView(detailBinding.root)
+                dialog.show()
+            }
         })
     }
 

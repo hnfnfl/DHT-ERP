@@ -92,4 +92,13 @@
     <string name="customer_phone">Phone : %1$s</string>
     <string name="supplier_type">Type : %1$s</string>
     <string name="supplier">Supplier</string>
+    <string name="product_name_category">%1$s (%2$s)</string>
+    <string name="product">Product</string>
+    <string name="product_price">Rp %1$s</string>
+    <string name="product_specification">Product specification</string>
+    <string name="specification_name">Name</string>
+    <string name="specification_value">Value</string>
+    <string name="product_composition">Product composition</string>
+    <string name="product_goods">Goods</string>
+    <string name="product_requirement">Needs</string>
 </resources>
