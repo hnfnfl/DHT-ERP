@@ -112,4 +112,9 @@ interface DataService {
     fun getSupplier(
         @Header("Authorization") tokenAuth: String,
     ): Call<SupplierResponse>
+
+    @GET("main/getProduct")
+    fun getProduct(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<ProductResponse>
 }

@@ -102,5 +102,8 @@
     <string name="customer_phone">Telp : %1$s</string>
     <string name="supplier_type">Jenis : %1$s</string>
     <string name="supplier">Pemasok</string>
+    <string name="product_name_category">%1$s (%2$s)</string>
+    <string name="product">Produk</string>
+    <string name="product_price">Rp %1$s</string>
 
 </resources>

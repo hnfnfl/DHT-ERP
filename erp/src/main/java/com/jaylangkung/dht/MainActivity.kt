@@ -19,6 +19,7 @@ import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
 import com.jaylangkung.dht.master_design.customer.CustomerActivity
+import com.jaylangkung.dht.master_design.product.ProductActivity
 import com.jaylangkung.dht.master_design.supplier.SupplierActivity
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
@@ -125,6 +126,8 @@ class MainActivity : AppCompatActivity() {
             R.drawable.ic_process, //15
             R.drawable.ic_bug, //16
             R.drawable.ic_administrator, //17
+            R.drawable.ic_product, //18
+
         )
 
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
@@ -226,6 +229,7 @@ class MainActivity : AppCompatActivity() {
                                 15L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 16L -> intent = Intent(this@MainActivity, MainActivity::class.java)
                                 17L -> intent = Intent(this@MainActivity, SupplierActivity::class.java)
+                                18L -> intent = Intent(this@MainActivity, ProductActivity::class.java)
 
                                 99L -> logout(idadmin)
                                 else -> Toasty.warning(this@MainActivity, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
