@@ -102,4 +102,7 @@
     <string name="product_goods">Goods</string>
     <string name="product_requirement">Needs</string>
     <string name="shipment">Shipment</string>
+    <string name="goods">Goods</string>
+    <string name="inquiries_nama_kode_process">%1$s (%2$s : %3$s)</string>
+    <string name="inquiries_process">Process Inquiries</string>
 </resources>

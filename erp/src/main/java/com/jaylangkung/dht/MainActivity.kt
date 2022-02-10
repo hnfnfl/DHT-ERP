@@ -6,9 +6,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
@@ -19,6 +22,8 @@ import com.jaylangkung.dht.administrator.level.LevelActivity
 import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
+import com.jaylangkung.dht.inquiries_progress.InquiriesProcessAdapter
+import com.jaylangkung.dht.inquiries_progress.InquiriesProcessEntity
 import com.jaylangkung.dht.master_design.customer.CustomerActivity
 import com.jaylangkung.dht.master_design.goods.GoodsActivity
 import com.jaylangkung.dht.master_design.product.ProductActivity
@@ -26,6 +31,8 @@ import com.jaylangkung.dht.master_design.shipment.ShipmentActivity
 import com.jaylangkung.dht.master_design.supplier.SupplierActivity
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
+import com.jaylangkung.dht.retrofit.DhtService
+import com.jaylangkung.dht.retrofit.response.InquiriesProcessResponse
 import com.jaylangkung.dht.retrofit.response.MenuResponse
 import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
@@ -47,12 +54,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var myPreferences: MySharedPreferences
+    private lateinit var inquiriesProcessAdapter: InquiriesProcessAdapter
+    private var listData: ArrayList<InquiriesProcessEntity> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         myPreferences = MySharedPreferences(this@MainActivity)
+        inquiriesProcessAdapter = InquiriesProcessAdapter()
 
         if (ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED
@@ -93,10 +103,15 @@ class MainActivity : AppCompatActivity() {
             .into(binding.imgProfile)
 
         getMenu(idadmin, idlevel, tokenAuth)
+        getPersentaseProses(tokenAuth)
 
         binding.fabWebApp.setOnClickListener {
             startActivity(Intent(this@MainActivity, LoginWebAppActivity::class.java))
             finish()
+        }
+
+        binding.llBody.setOnRefreshListener {
+            getPersentaseProses(tokenAuth)
         }
     }
 
@@ -322,6 +337,43 @@ class MainActivity : AppCompatActivity() {
             }
             .build()
         mDialog.show()
+    }
+
+    private fun getPersentaseProses(tokenAuth: String) {
+        val service = RetrofitClient().apiRequest().create(DhtService::class.java)
+        service.getPersentaseProses(tokenAuth).enqueue(object : Callback<InquiriesProcessResponse> {
+            override fun onResponse(call: Call<InquiriesProcessResponse>, response: Response<InquiriesProcessResponse>) {
+                if (response.isSuccessful) {
+                    binding.llBody.isRefreshing = false
+                    if (response.body()!!.status == "success") {
+                        binding.loadingAnim.visibility = View.GONE
+                        listData = response.body()!!.data
+                        inquiriesProcessAdapter.setItem(listData)
+                        inquiriesProcessAdapter.notifyItemRangeChanged(0, listData.size)
+
+                        with(binding.rvInquiriesProcess) {
+                            layoutManager = LinearLayoutManager(this@MainActivity)
+                            itemAnimator = DefaultItemAnimator()
+                            setHasFixedSize(true)
+                            adapter = inquiriesProcessAdapter
+                        }
+                    }
+                } else {
+                    ErrorHandler().responseHandler(
+                        this@MainActivity,
+                        "getPersentaseProses | onResponse", response.message()
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<InquiriesProcessResponse>, t: Throwable) {
+                binding.llBody.isRefreshing = false
+                ErrorHandler().responseHandler(
+                    this@MainActivity,
+                    "getPersentaseProses | onFailure", t.message.toString()
+                )
+            }
+        })
     }
 
 //    private fun insertJsonObject() {

@@ -113,5 +113,7 @@
     <string name="product_requirement">Kebutuhan</string>
     <string name="shipment">Pengiriman</string>
     <string name="goods">Barang</string>
+    <string name="inquiries_nama_kode_process">%1$s (%2$s : %3$s)</string>
+    <string name="inquiries_process">Proses Inquiries</string>
 
 </resources>

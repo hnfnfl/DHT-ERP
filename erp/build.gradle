@@ -85,6 +85,9 @@ dependencies {
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'com.github.chandreshandroid:MaterialProgressButton:1.6'
 
+    //progress bar
+    implementation 'com.akexorcist:round-corner-progress-bar:2.1.2'
+
     //Rounded image
     implementation 'com.makeramen:roundedimageview:2.3.0'
 

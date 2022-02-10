@@ -67,9 +67,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_home"
-                android:paddingHorizontal="18dp"
+                android:padding="18dp"
                 android:scrollbars="none">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/text_gangguan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:drawablePadding="8dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/inquiries_process"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_inquiries_process"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/text_gangguan"
+                            tools:listitem="@layout/item_inquiries_process" />
+
+                        <com.github.ybq.android.spinkit.SpinKitView
+                            android:id="@+id/loading_anim"
+                            style="@style/SpinKitView.Large.ThreeBounce"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:SpinKit_Color="@color/secondaryLightColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
 
@@ -82,6 +127,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:padding="10dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:menu_animationDelayPerItem="50"
