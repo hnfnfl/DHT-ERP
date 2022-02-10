@@ -113,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
                 binding.btnLogin.endAnimation()
                 ErrorHandler().responseHandler(
                     this@LoginActivity,
-                    "loginProcess | onResponse", t.message.toString()
+                    "loginProcess | onFailure", t.message.toString()
                 )
             }
         })
