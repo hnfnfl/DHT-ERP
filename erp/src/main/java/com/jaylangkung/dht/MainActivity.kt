@@ -22,6 +22,7 @@ import com.jaylangkung.dht.administrator.level.LevelActivity
 import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
+import com.jaylangkung.dht.dht.inquiries.InquiriesActivity
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessAdapter
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessEntity
 import com.jaylangkung.dht.master_design.customer.CustomerActivity
@@ -249,6 +250,8 @@ class MainActivity : AppCompatActivity() {
                                 16L -> intent = Intent(context, MainActivity::class.java)
                                 17L -> intent = Intent(context, SupplierActivity::class.java)
                                 18L -> intent = Intent(context, ProductActivity::class.java)
+
+                                20L -> intent = Intent(context, InquiriesActivity::class.java)
 
                                 24L -> intent = Intent(context, ShipmentActivity::class.java)
                                 25L -> intent = Intent(context, GoodsActivity::class.java)

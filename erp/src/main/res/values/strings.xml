@@ -96,15 +96,15 @@
     <string name="isupdate">isupdate</string>
     <string name="isdelete">isdelete</string>
     <string name="admin_department">Departemen : %1$s</string>
-    <string name="customer_additional_holder">- %1$s : %2$s</string>
+    <string name="customer_additional_holder" translatable="false">- %1$s : %2$s</string>
     <string name="additional_information">Informasi Tambahan</string>
     <string name="customer_address">Alamat : %1$s</string>
     <string name="customer_phone">Telp : %1$s</string>
     <string name="supplier_type">Jenis : %1$s</string>
     <string name="supplier">Pemasok</string>
-    <string name="product_name_category">%1$s (%2$s)</string>
+    <string name="product_name_category" translatable="false">%1$s (%2$s)</string>
     <string name="product">Produk</string>
-    <string name="product_price">Rp %1$s</string>
+    <string name="product_price" translatable="false">Rp %1$s</string>
     <string name="product_specification">Spesifikasi produk</string>
     <string name="specification_name">Nama</string>
     <string name="specification_value">Nilai</string>
@@ -113,7 +113,19 @@
     <string name="product_requirement">Kebutuhan</string>
     <string name="shipment">Pengiriman</string>
     <string name="goods">Barang</string>
-    <string name="inquiries_nama_kode_process">%1$s (%2$s : %3$s)</string>
+    <string name="inquiries_nama_kode_process" translatable="false">%1$s (%2$s : %3$s)</string>
     <string name="inquiries_process">Proses Inquiries</string>
+    <string name="inquiries_name_phone" translatable="false">%1$s (%2$s)</string>
+    <string name="inquiries_createddate" translatable="false">created : %1$s</string>
+    <string name="inquiries_lastupdate" translatable="false">updated : %1$s</string>
+    <string name="ikon_tombol_detail">ikon tombol detail</string>
+    <string name="inquiries_detail" translatable="false">Detail</string>
+    <string name="inquiries_sales_contract" translatable="false">Sales Contract</string>
+    <string name="inquiries_work_order" translatable="false">Work Order</string>
+    <string name="inquiries_status" translatable="false">Status : %1$s</string>
+    <string name="inquiries_status_drafted" translatable="false">Drafted</string>
+    <string name="inquiries_status_waiting_approval" translatable="false">Waiting approval</string>
+    <string name="inquiries_status_waiting_approval_customer" translatable="false">Waiting approval customer</string>
+    <string name="inquiries">Inquiries</string>
 
 </resources>
