@@ -127,7 +127,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:padding="10dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:menu_animationDelayPerItem="50"
