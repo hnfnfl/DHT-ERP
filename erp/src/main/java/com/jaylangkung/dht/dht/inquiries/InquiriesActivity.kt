@@ -2,7 +2,6 @@ package com.jaylangkung.dht.dht.inquiries
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -75,10 +74,8 @@ class InquiriesActivity : AppCompatActivity() {
                     tvDetailProductTotal.text = getString(R.string.inquiries_product_total, formatter.format(total).toString())
                 }
 
-                dialog.behavior.peekHeight = 700
-                dialog.behavior.maxHeight = 1300
-                val state = dialog.behavior.state.toString()
-                Log.e("debug", state)
+                dialog.behavior.peekHeight = 600
+                dialog.behavior.maxHeight = 1200
                 dialog.setCancelable(true)
                 dialog.setContentView(detailBinding.root)
                 dialog.show()
