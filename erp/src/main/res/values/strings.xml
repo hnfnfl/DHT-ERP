@@ -127,5 +127,14 @@
     <string name="inquiries_status_waiting_approval" translatable="false">Waiting approval</string>
     <string name="inquiries_status_waiting_approval_customer" translatable="false">Waiting approval customer</string>
     <string name="inquiries">Inquiries</string>
+    <string name="inquiries_payment">Pembayaran : %1$s</string>
+    <string name="shipment_sent_date">Dikirim Tanggal</string>
+    <string name="shipment_estimated_date">Perkiraan Sampai</string>
+    <string name="inquiries_detail_title" translatable="false">Detail Inquiries %1$s</string>
+    <string name="inquiries_product_total" translatable="false">Total : Rp %1$s</string>
+    <string name="inquiries_product_price">Harga : Rp %1$s</string>
+    <string name="inquiries_product_qty" translatable="false">Qty : %1$s</string>
+    <string name="inquiries_product_subtotal" translatable="false">Subtotal : Rp %1$s</string>
+    <string name="inquiries_product_packing" translatable="false">Packing : %1$s</string>
 
 </resources>

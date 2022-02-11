@@ -103,4 +103,8 @@
     <string name="inquiries_process">Process Inquiries</string>
     <string name="ikon_tombol_detail">detail button icon</string>
     <string name="inquiries">Inquiries</string>
+    <string name="inquiries_payment">Payment : %1$s</string>
+    <string name="shipment_sent_date">Sent Date</string>
+    <string name="shipment_estimated_date">Estimated Date</string>
+    <string name="inquiries_product_price">Price : Rp %1$s</string>
 </resources>

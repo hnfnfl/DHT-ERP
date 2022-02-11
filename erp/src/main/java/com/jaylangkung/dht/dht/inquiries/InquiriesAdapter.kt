@@ -5,8 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
-import com.jaylangkung.dht.administrator.admin.AdminAdapter
-import com.jaylangkung.dht.administrator.admin.AdminEntity
 import com.jaylangkung.dht.databinding.ItemInquiriesBinding
 import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.MySharedPreferences
@@ -14,7 +12,9 @@ import com.jaylangkung.dht.utils.MySharedPreferences
 class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
 
     private var list = ArrayList<InquiriesEntity>()
-    private lateinit var onItemClickCallback: OnItemClickCallback
+    private lateinit var showDetailCallBack: OnItemClickCallback
+    private lateinit var showSCCallBack: OnItemClickCallback
+    private lateinit var showWOCallBack: OnItemClickCallback
 
     fun setItem(item: List<InquiriesEntity>?) {
         if (item == null) return
@@ -28,7 +28,15 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+        this.showDetailCallBack = onItemClickCallback
+    }
+
+    fun setOnShowSCClick(onItemClickCallback: OnItemClickCallback) {
+        this.showSCCallBack = onItemClickCallback
+    }
+
+    fun setOnShowWOClick(onItemClickCallback: OnItemClickCallback) {
+        this.showWOCallBack = onItemClickCallback
     }
 
     class ItemHolder(private val binding: ItemInquiriesBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -45,6 +53,7 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
                 tvInquiriesCreatedate.text = itemView.context.getString(R.string.inquiries_createddate, item.createddate)
                 tvInquiriesUpdatedate.text = itemView.context.getString(R.string.inquiries_lastupdate, item.lastupdate)
                 tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, item.status)
+                tvInquiriesPayment.text = itemView.context.getString(R.string.inquiries_payment, item.payment_detail)
 
                 when (item.status) {
                     "drafted" -> {
@@ -56,7 +65,12 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
                                 btnMakeIt.visibility = View.VISIBLE
                             }
                             else -> {
-                                tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status_drafted)
+                                tvInquiriesStatus.text =
+                                    itemView.context.getString(
+                                        R.string.inquiries_status, itemView.context.getString(
+                                            R.string.inquiries_status_drafted
+                                        )
+                                    )
                             }
                         }
                     }
@@ -69,17 +83,30 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
                                 btnMakeIt.visibility = View.VISIBLE
                             }
                             else -> {
-                                tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status_waiting_approval_customer)
+                                tvInquiriesStatus.text =
+                                    itemView.context.getString(
+                                        R.string.inquiries_status, itemView.context.getString(
+                                            R.string.inquiries_status_waiting_approval_customer
+                                        )
+                                    )
                             }
                         }
                     }
                     "waiting_approval" -> {
-                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status_waiting_approval)
+                        tvInquiriesStatus.text =
+                            itemView.context.getString(
+                                R.string.inquiries_status, itemView.context.getString(
+                                    R.string.inquiries_status_waiting_approval
+                                )
+                            )
                     }
                 }
-
             }
         }
+
+        val btnShowDetail = binding.btnShowInquiriesDetail
+        val btnShowSC = binding.btnShowInquiriesSc
+        val btnShowWO = binding.btnShowInquiriesWo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -90,9 +117,16 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val item = list[position]
         holder.bind(item)
+        holder.btnShowDetail.setOnClickListener {
+            showDetailCallBack.onItemClicked(list, position)
+        }
 
-        holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(list, position)
+        holder.btnShowSC.setOnClickListener {
+            showSCCallBack.onItemClicked(list, position)
+        }
+
+        holder.btnShowWO.setOnClickListener {
+            showWOCallBack.onItemClicked(list, position)
         }
     }
 

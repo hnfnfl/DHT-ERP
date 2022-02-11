@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="8dp"
-    android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@color/md_grey_100"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="16dp"
     app:elevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +19,7 @@
             android:id="@+id/tv_inquiries_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:fontFamily="sans-serif-medium"
             android:text=""
             android:textColor="@color/black"
@@ -31,7 +31,7 @@
             android:id="@+id/tv_inquiries_name_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif"
             android:text="@string/inquiries_name_phone"
             android:textColor="@color/black"
@@ -47,10 +47,21 @@
             android:fontFamily="sans-serif"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_name_phone" />
 
+        <TextView
+            android:id="@+id/tv_inquiries_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/inquiries_payment"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_address" />
 
         <TextView
             android:id="@+id/tv_inquiries_createdate"
@@ -58,7 +69,7 @@
             android:layout_height="wrap_content"
             android:text="@string/inquiries_createddate"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +79,7 @@
             android:layout_height="wrap_content"
             android:text="@string/inquiries_lastupdate"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_createdate" />
 
@@ -82,7 +93,7 @@
             android:weightSum="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_address">
+            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_payment">
 
             <LinearLayout
                 android:id="@+id/btn_show_inquiries_detail"
