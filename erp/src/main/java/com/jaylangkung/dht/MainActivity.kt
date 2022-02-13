@@ -222,7 +222,6 @@ class MainActivity : AppCompatActivity() {
                             val context: Context = this@MainActivity
                             when (drawerItem.identifier) {
                                 1L -> intent = Intent(context, MainActivity::class.java)
-                                2L -> intent = Intent(context, MainActivity::class.java)
                                 3L -> Log.d("menu", drawerItem.identifier.toString())
                                 4L -> intent = Intent(context, AdminActivity::class.java)
                                 5L -> intent = Intent(context, MainActivity::class.java)
@@ -250,7 +249,7 @@ class MainActivity : AppCompatActivity() {
                                 16L -> intent = Intent(context, MainActivity::class.java)
                                 17L -> intent = Intent(context, SupplierActivity::class.java)
                                 18L -> intent = Intent(context, ProductActivity::class.java)
-
+                                19L -> Log.d("menu", drawerItem.identifier.toString())
                                 20L -> intent = Intent(context, InquiriesActivity::class.java)
 
                                 24L -> intent = Intent(context, ShipmentActivity::class.java)
