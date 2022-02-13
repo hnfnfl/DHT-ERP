@@ -1,4 +1,4 @@
-package com.jaylangkung.brainnet_staff.retrofit.response
+package com.jaylangkung.dht.retrofit.response
 
 class DefaultResponse(
     var status: String = "",

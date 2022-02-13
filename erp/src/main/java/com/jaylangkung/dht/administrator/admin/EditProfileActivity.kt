@@ -13,7 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.e_kan.utils.FileUtils
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityEditProfileBinding

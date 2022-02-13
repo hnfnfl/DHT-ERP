@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.administrator.admin.AdminActivity
 import com.jaylangkung.dht.administrator.admin.EditProfileActivity
 import com.jaylangkung.dht.administrator.level.LevelActivity

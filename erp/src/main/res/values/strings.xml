@@ -136,5 +136,9 @@
     <string name="inquiries_product_qty" translatable="false">Qty : %1$s</string>
     <string name="inquiries_product_subtotal" translatable="false">Subtotal : Rp %1$s</string>
     <string name="inquiries_product_packing" translatable="false">Packing : %1$s</string>
+    <string name="sc_wo_inquiries_code">Kode</string>
+    <string name="sc_wo_created_date">Tanggal Dibuat</string>
+    <string name="sc_wo_customer">Pelanggan</string>
+    <string name="tv_sc_net_gross">Netto : %1$s | Bruto : %2$s</string>
 
 </resources>

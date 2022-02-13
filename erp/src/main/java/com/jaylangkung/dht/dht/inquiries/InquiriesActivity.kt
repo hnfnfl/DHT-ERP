@@ -12,6 +12,8 @@ import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityInquiriesBinding
 import com.jaylangkung.dht.databinding.BottomSheetInquiriesDetailBinding
+import com.jaylangkung.dht.databinding.BottomSheetInquiriesScBinding
+import com.jaylangkung.dht.databinding.BottomSheetInquiriesWoBinding
 import com.jaylangkung.dht.retrofit.DhtService
 import com.jaylangkung.dht.retrofit.response.InquiriesResponse
 import com.jaylangkung.dht.utils.Constants
@@ -26,6 +28,8 @@ class InquiriesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInquiriesBinding
     private lateinit var detailBinding: BottomSheetInquiriesDetailBinding
+    private lateinit var scBinding: BottomSheetInquiriesScBinding
+    private lateinit var woBinding: BottomSheetInquiriesWoBinding
     private lateinit var myPreferences: MySharedPreferences
     private lateinit var inquiriesAdapter: InquiriesAdapter
     private lateinit var inquiriesDetailAdapter: InquiriesDetailAdapter
@@ -84,13 +88,81 @@ class InquiriesActivity : AppCompatActivity() {
 
         inquiriesAdapter.setOnShowSCClick(object : InquiriesAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<InquiriesEntity>, position: Int) {
+                scBinding = BottomSheetInquiriesScBinding.inflate(layoutInflater)
+                val dialog = BottomSheetDialog(this@InquiriesActivity)
 
+                listDataDetail = data[position].detail
+                inquiriesDetailAdapter.setItem(listDataDetail)
+                inquiriesDetailAdapter.notifyItemRangeChanged(0, listDataDetail.size)
+                val total = listDataDetail.sumOf { it.sub_total.toInt() }
+                val formatter = DecimalFormat("#,###")
+
+                with(scBinding.rvDetailProduct) {
+                    layoutManager = LinearLayoutManager(this@InquiriesActivity)
+                    itemAnimator = DefaultItemAnimator()
+                    setHasFixedSize(true)
+                    adapter = inquiriesDetailAdapter
+                }
+
+                with(scBinding) {
+                    tvInquiriesCode.text = data[position].kode
+                    tvScCode.text = data[position].sales_contract[0].idsc
+                    tvScCreatedDate.text = data[position].createddate
+                    tvScCustomer.text = getString(R.string.inquiries_name_phone, data[position].nama, data[position].telp)
+                    tvScCustomerAddress.text = data[position].alamat
+                    tvDetailProductTotal.text = getString(R.string.inquiries_product_total, formatter.format(total).toString())
+                    tvProductNetGross.text = getString(
+                        R.string.tv_sc_net_gross,
+                        data[position].sales_contract[0].netto,
+                        data[position].sales_contract[0].bruto
+                    )
+                }
+
+                dialog.behavior.peekHeight = 800
+                dialog.behavior.maxHeight = 1600
+                dialog.setCancelable(true)
+                dialog.setContentView(scBinding.root)
+                dialog.show()
             }
         })
 
         inquiriesAdapter.setOnShowWOClick(object : InquiriesAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<InquiriesEntity>, position: Int) {
+                woBinding = BottomSheetInquiriesWoBinding.inflate(layoutInflater)
+                val dialog = BottomSheetDialog(this@InquiriesActivity)
 
+                listDataDetail = data[position].detail
+                inquiriesDetailAdapter.setItem(listDataDetail)
+                inquiriesDetailAdapter.notifyItemRangeChanged(0, listDataDetail.size)
+                val total = listDataDetail.sumOf { it.sub_total.toInt() }
+                val formatter = DecimalFormat("#,###")
+
+                with(woBinding.rvDetailProduct) {
+                    layoutManager = LinearLayoutManager(this@InquiriesActivity)
+                    itemAnimator = DefaultItemAnimator()
+                    setHasFixedSize(true)
+                    adapter = inquiriesDetailAdapter
+                }
+
+                with(woBinding) {
+                    tvInquiriesCode.text = data[position].kode
+                    tvWoCode.text = data[position].work_order[0].idwo
+                    tvWoCreatedDate.text = data[position].createddate
+                    tvWoCustomer.text = getString(R.string.inquiries_name_phone, data[position].nama, data[position].telp)
+                    tvWoCustomerAddress.text = data[position].alamat
+                    tvDetailProductTotal.text = getString(R.string.inquiries_product_total, formatter.format(total).toString())
+                    tvProductNetGross.text = getString(
+                        R.string.tv_sc_net_gross,
+                        data[position].work_order[0].netto,
+                        data[position].work_order[0].bruto
+                    )
+                }
+
+                dialog.behavior.peekHeight = 800
+                dialog.behavior.maxHeight = 1600
+                dialog.setCancelable(true)
+                dialog.setContentView(woBinding.root)
+                dialog.show()
             }
         })
     }

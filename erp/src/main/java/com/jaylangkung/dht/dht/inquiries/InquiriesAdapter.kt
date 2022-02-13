@@ -4,10 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemInquiriesBinding
+import com.jaylangkung.dht.retrofit.DhtService
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.utils.Constants
+import com.jaylangkung.dht.utils.ErrorHandler
 import com.jaylangkung.dht.utils.MySharedPreferences
+import es.dmoral.toasty.Toasty
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
 
@@ -46,6 +54,7 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
             with(binding) {
                 myPreferences = MySharedPreferences(itemView.context)
                 val iddepartemen = myPreferences.getValue(Constants.USER_IDDEPARTEMEN).toString()
+                val tokenAuth = itemView.context.getString(R.string.token_auth, myPreferences.getValue(Constants.TokenAuth).toString())
 
                 tvInquiriesCode.text = item.kode
                 tvInquiriesNamePhone.text = itemView.context.getString(R.string.inquiries_name_phone, item.nama, item.telp)
@@ -101,12 +110,50 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
                             )
                     }
                 }
+
+                btnMakeIt.setOnClickListener {
+                    btnMakeIt.startAnimation()
+                    updateInquiries(item.idinquiries, tokenAuth)
+                }
             }
         }
 
         val btnShowDetail = binding.btnShowInquiriesDetail
         val btnShowSC = binding.btnShowInquiriesSc
         val btnShowWO = binding.btnShowInquiriesWo
+
+        private fun updateInquiries(idinquiries: String, tokenAuth: String) {
+            val service = RetrofitClient().apiRequest().create(DhtService::class.java)
+            service.updateInquiries(idinquiries, "waiting_approval", tokenAuth).enqueue(object : Callback<DefaultResponse> {
+                override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                    binding.btnMakeIt.endAnimation()
+                    if (response.isSuccessful) {
+                        if (response.body()!!.status == "success") {
+                            binding.btnMakeIt.visibility = View.GONE
+                            binding.tvInquiriesStatus.text = itemView.context.getString(
+                                R.string.inquiries_status, itemView.context.getString(
+                                    R.string.inquiries_status_waiting_approval
+                                )
+                            )
+                            Toasty.success(itemView.context, "Inquiries berhasil diperbarui", Toasty.LENGTH_LONG).show()
+                        }
+                    } else {
+                        ErrorHandler().responseHandler(
+                            itemView.context,
+                            "updateInquiries | onResponse", response.message()
+                        )
+                    }
+                }
+
+                override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                    binding.btnMakeIt.endAnimation()
+                    ErrorHandler().responseHandler(
+                        itemView.context,
+                        "updateInquiries | onFailure", t.message.toString()
+                    )
+                }
+            })
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {

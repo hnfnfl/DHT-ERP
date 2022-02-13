@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityLevelBinding

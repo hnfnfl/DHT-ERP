@@ -107,4 +107,8 @@
     <string name="shipment_sent_date">Sent Date</string>
     <string name="shipment_estimated_date">Estimated Date</string>
     <string name="inquiries_product_price">Price : Rp %1$s</string>
+    <string name="sc_wo_inquiries_code">Code</string>
+    <string name="sc_wo_created_date">Created Date</string>
+    <string name="sc_wo_customer">Customer</string>
+    <string name="tv_sc_net_gross">Net : %1$s | Gross : %2$s</string>
 </resources>

@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.budiyev.android.codescanner.*
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityLoginWebAppBinding

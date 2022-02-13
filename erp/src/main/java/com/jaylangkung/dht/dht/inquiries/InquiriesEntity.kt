@@ -14,6 +14,6 @@ class InquiriesEntity(
     var shipment: String = "",
     var shipment_send: String = "",
     var shipment_estimasi: String = "",
-    var sales_contract: ArrayList<InquiriesDetailEntity>,
-    var work_order: ArrayList<InquiriesDetailEntity>,
+    var sales_contract: ArrayList<SCWOEntity>,
+    var work_order: ArrayList<SCWOEntity>,
 )

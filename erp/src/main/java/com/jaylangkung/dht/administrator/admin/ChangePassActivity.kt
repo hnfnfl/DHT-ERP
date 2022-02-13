@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityAdminChangePassBinding
 import com.jaylangkung.dht.retrofit.DataService

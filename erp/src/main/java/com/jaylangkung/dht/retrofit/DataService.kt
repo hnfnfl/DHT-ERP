@@ -1,6 +1,6 @@
 package com.jaylangkung.dht.retrofit
 
-import com.jaylangkung.brainnet_staff.retrofit.response.DefaultResponse
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.retrofit.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
