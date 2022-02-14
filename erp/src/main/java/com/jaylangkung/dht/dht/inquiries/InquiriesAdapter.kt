@@ -61,55 +61,36 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
                 tvInquiriesAddress.text = item.alamat
                 tvInquiriesCreatedate.text = itemView.context.getString(R.string.inquiries_createddate, item.createddate)
                 tvInquiriesUpdatedate.text = itemView.context.getString(R.string.inquiries_lastupdate, item.lastupdate)
-                tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, item.status)
-                tvInquiriesPayment.text = itemView.context.getString(R.string.inquiries_payment, item.payment_detail)
-
+                var status = ""
                 when (item.status) {
                     "drafted" -> {
+                        status = itemView.context.getString(R.string.inquiries_status_drafted)
                         when (iddepartemen) {
                             "1" -> {
                                 btnMakeIt.visibility = View.VISIBLE
                             }
                             "3" -> {
                                 btnMakeIt.visibility = View.VISIBLE
-                            }
-                            else -> {
-                                tvInquiriesStatus.text =
-                                    itemView.context.getString(
-                                        R.string.inquiries_status, itemView.context.getString(
-                                            R.string.inquiries_status_drafted
-                                        )
-                                    )
-                            }
-                        }
-                    }
-                    "waiting_approval_customer" -> {
-                        when (iddepartemen) {
-                            "1" -> {
-                                btnMakeIt.visibility = View.VISIBLE
-                            }
-                            "3" -> {
-                                btnMakeIt.visibility = View.VISIBLE
-                            }
-                            else -> {
-                                tvInquiriesStatus.text =
-                                    itemView.context.getString(
-                                        R.string.inquiries_status, itemView.context.getString(
-                                            R.string.inquiries_status_waiting_approval_customer
-                                        )
-                                    )
                             }
                         }
                     }
                     "waiting_approval" -> {
-                        tvInquiriesStatus.text =
-                            itemView.context.getString(
-                                R.string.inquiries_status, itemView.context.getString(
-                                    R.string.inquiries_status_waiting_approval
-                                )
-                            )
+                        status = itemView.context.getString(R.string.inquiries_status_waiting_approval)
+                    }
+                    "waiting_approval_customer" -> {
+                        status = itemView.context.getString(R.string.inquiries_status_waiting_approval_customer)
+                        when (iddepartemen) {
+                            "1" -> {
+                                btnMakeIt.visibility = View.VISIBLE
+                            }
+                            "3" -> {
+                                btnMakeIt.visibility = View.VISIBLE
+                            }
+                        }
                     }
                 }
+                tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, status)
+                tvInquiriesPayment.text = itemView.context.getString(R.string.inquiries_payment, item.payment_detail)
 
                 btnMakeIt.setOnClickListener {
                     btnMakeIt.startAnimation()
