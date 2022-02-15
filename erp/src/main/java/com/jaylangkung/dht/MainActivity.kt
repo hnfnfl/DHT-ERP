@@ -21,6 +21,7 @@ import com.jaylangkung.dht.administrator.level.LevelActivity
 import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
+import com.jaylangkung.dht.dht.department.DepartmentActivity
 import com.jaylangkung.dht.dht.inquiries.InquiriesActivity
 import com.jaylangkung.dht.dht.packing.PackingActivity
 import com.jaylangkung.dht.dht.sales_contract.SalesContractActivity
@@ -228,7 +229,7 @@ class MainActivity : AppCompatActivity() {
                                 4L -> intent = Intent(context, AdminActivity::class.java)
                                 5L -> intent = Intent(context, MainActivity::class.java)
                                 6L -> intent = Intent(context, LevelActivity::class.java)
-                                7L -> intent = Intent(context, MainActivity::class.java)
+                                7L -> intent = Intent(context, DepartmentActivity::class.java)
                                 8L -> intent = Intent(context, MainActivity::class.java)
                                 9L -> intent = Intent(context, EditProfileActivity::class.java)
                                     .apply {

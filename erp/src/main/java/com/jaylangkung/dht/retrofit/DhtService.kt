@@ -1,9 +1,6 @@
 package com.jaylangkung.dht.retrofit
 
-import com.jaylangkung.dht.retrofit.response.DefaultResponse
-import com.jaylangkung.dht.retrofit.response.InquiriesProcessResponse
-import com.jaylangkung.dht.retrofit.response.InquiriesResponse
-import com.jaylangkung.dht.retrofit.response.PackingResponse
+import com.jaylangkung.dht.retrofit.response.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -12,6 +9,11 @@ interface DhtService {
     fun getPersentaseProses(
         @Header("Authorization") tokenAuth: String,
     ): Call<InquiriesProcessResponse>
+
+    @GET("dht/getDepartemen")
+    fun getDepartemen(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<DepartmentResponse>
 
     @GET("dht/getInquiries")
     fun getInquiries(

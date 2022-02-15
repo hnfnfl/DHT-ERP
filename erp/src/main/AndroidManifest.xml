@@ -23,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
         <activity
+            android:name=".dht.department.DepartmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".dht.packing.PackingScannerActivity"
             android:exported="false" />
         <activity

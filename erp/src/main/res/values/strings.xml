@@ -147,5 +147,6 @@
     <string name="packing_already_print">Sudah dicetak</string>
     <string name="packing_load_container">Masuk kontainer</string>
     <string name="packing">Packing</string>
+    <string name="department">Departemen</string>
 
 </resources>

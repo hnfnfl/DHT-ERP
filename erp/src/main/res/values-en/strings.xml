@@ -117,4 +117,5 @@
     <string name="packing_already_print">Printed</string>
     <string name="packing_load_container">Load to container</string>
     <string name="packing">Packing</string>
+    <string name="department">Department</string>
 </resources>
