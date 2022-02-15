@@ -81,6 +81,9 @@ class SalesContractAdapter : RecyclerView.Adapter<SalesContractAdapter.ItemHolde
                             "2" -> {
                                 btnCustomerApproved.visibility = View.VISIBLE
                             }
+                            "3" -> {
+                                btnCustomerApproved.visibility = View.VISIBLE
+                            }
                         }
                     }
                     "rejected" -> {

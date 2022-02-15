@@ -79,6 +79,9 @@ class InquiriesAdapter : RecyclerView.Adapter<InquiriesAdapter.ItemHolder>() {
                     }
                     "waiting_approval_customer" -> {
                         status = itemView.context.getString(R.string.inquiries_status_waiting_approval_customer)
+                    }
+                    "rejected" -> {
+                        status = itemView.context.getString(R.string.inquiries_status_rejected)
                         when (iddepartemen) {
                             "1" -> {
                                 btnMakeIt.visibility = View.VISIBLE
