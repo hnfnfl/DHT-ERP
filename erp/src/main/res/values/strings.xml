@@ -142,5 +142,10 @@
     <string name="tv_sc_net_gross">Netto : %1$s | Bruto : %2$s</string>
     <string name="inquiries_status_rejected" translatable="false">Rejected, please fix it on Inquiries</string>
     <string name="inquiries_status_process">Proses</string>
+    <string name="packing_must_print">Harus dicetak</string>
+    <string name="packing_scanned">Ter-scan</string>
+    <string name="packing_already_print">Sudah dicetak</string>
+    <string name="packing_load_container">Masuk kontainer</string>
+    <string name="packing">Packing</string>
 
 </resources>

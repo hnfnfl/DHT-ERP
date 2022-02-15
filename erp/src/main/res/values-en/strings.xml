@@ -112,4 +112,9 @@
     <string name="sc_wo_customer">Customer</string>
     <string name="tv_sc_net_gross">Net : %1$s | Gross : %2$s</string>
     <string name="inquiries_status_process">Process</string>
+    <string name="packing_must_print">Must be printed</string>
+    <string name="packing_scanned">Scanned</string>
+    <string name="packing_already_print">Printed</string>
+    <string name="packing_load_container">Load to container</string>
+    <string name="packing">Packing</string>
 </resources>
