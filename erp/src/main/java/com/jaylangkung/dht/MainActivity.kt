@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.administrator.admin.AdminActivity
 import com.jaylangkung.dht.administrator.admin.EditProfileActivity
 import com.jaylangkung.dht.administrator.level.LevelActivity
@@ -23,6 +22,7 @@ import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
 import com.jaylangkung.dht.dht.inquiries.InquiriesActivity
+import com.jaylangkung.dht.dht.packing.PackingActivity
 import com.jaylangkung.dht.dht.sales_contract.SalesContractActivity
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessAdapter
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessEntity
@@ -34,6 +34,7 @@ import com.jaylangkung.dht.master_design.supplier.SupplierActivity
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.DhtService
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.retrofit.response.InquiriesProcessResponse
 import com.jaylangkung.dht.retrofit.response.MenuResponse
 import com.jaylangkung.dht.utils.Constants
@@ -254,6 +255,7 @@ class MainActivity : AppCompatActivity() {
                                 20L -> intent = Intent(context, InquiriesActivity::class.java)
                                 21L -> intent = Intent(context, SalesContractActivity::class.java)
 
+                                23L -> intent = Intent(context, PackingActivity::class.java)
                                 24L -> intent = Intent(context, ShipmentActivity::class.java)
                                 25L -> intent = Intent(context, GoodsActivity::class.java)
 
