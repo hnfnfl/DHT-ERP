@@ -52,6 +52,11 @@ class InquiriesActivity : AppCompatActivity() {
 
         getInquiries(tokenAuth)
 
+        binding.llBody.setOnRefreshListener {
+            binding.loadingAnim.visibility = View.VISIBLE
+            getInquiries(tokenAuth)
+        }
+
         inquiriesAdapter.setOnItemClickCallback(object : InquiriesAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<InquiriesEntity>, position: Int) {
                 detailBinding = BottomSheetInquiriesDetailBinding.inflate(layoutInflater)
@@ -176,6 +181,7 @@ class InquiriesActivity : AppCompatActivity() {
         val service = RetrofitClient().apiRequest().create(DhtService::class.java)
         service.getInquiries(tokenAuth).enqueue(object : Callback<InquiriesResponse> {
             override fun onResponse(call: Call<InquiriesResponse>, response: Response<InquiriesResponse>) {
+                binding.llBody.isRefreshing = false
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
                         binding.loadingAnim.visibility = View.GONE
@@ -207,6 +213,7 @@ class InquiriesActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<InquiriesResponse>, t: Throwable) {
+                binding.llBody.isRefreshing = false
                 binding.loadingAnim.visibility = View.GONE
                 ErrorHandler().responseHandler(
                     this@InquiriesActivity,
