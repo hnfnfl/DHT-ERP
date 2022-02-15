@@ -23,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DHT">
         <activity
+            android:name=".dht.sales_contract.SalesContractActivity"
+            android:exported="false" />
+        <activity
             android:name=".dht.inquiries.InquiriesActivity"
             android:exported="false" />
         <activity

@@ -23,6 +23,7 @@ import com.jaylangkung.dht.auth.LoginActivity
 import com.jaylangkung.dht.auth.LoginWebAppActivity
 import com.jaylangkung.dht.databinding.ActivityMainBinding
 import com.jaylangkung.dht.dht.inquiries.InquiriesActivity
+import com.jaylangkung.dht.dht.sales_contract.SalesContractActivity
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessAdapter
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessEntity
 import com.jaylangkung.dht.master_design.customer.CustomerActivity
@@ -251,6 +252,7 @@ class MainActivity : AppCompatActivity() {
                                 18L -> intent = Intent(context, ProductActivity::class.java)
                                 19L -> Log.d("menu", drawerItem.identifier.toString())
                                 20L -> intent = Intent(context, InquiriesActivity::class.java)
+                                21L -> intent = Intent(context, SalesContractActivity::class.java)
 
                                 24L -> intent = Intent(context, ShipmentActivity::class.java)
                                 25L -> intent = Intent(context, GoodsActivity::class.java)

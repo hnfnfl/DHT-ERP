@@ -16,7 +16,7 @@
         android:padding="12dp">
 
         <TextView
-            android:id="@+id/tv_inquiries_code"
+            android:id="@+id/tv_sc_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_inquiries_name_phone"
+            android:id="@+id/tv_sc_name_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -37,10 +37,10 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_code" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_sc_code" />
 
         <TextView
-            android:id="@+id/tv_inquiries_address"
+            android:id="@+id/tv_sc_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
@@ -48,22 +48,10 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_name_phone" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_sc_name_phone" />
 
         <TextView
-            android:id="@+id/tv_inquiries_payment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif"
-            android:text="@string/inquiries_payment"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_address" />
-
-        <TextView
-            android:id="@+id/tv_inquiries_createdate"
+            android:id="@+id/tv_sc_createdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inquiries_createddate"
@@ -73,14 +61,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_inquiries_updatedate"
+            android:id="@+id/tv_sc_updatedate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inquiries_lastupdate"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_createdate" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_sc_createdate" />
 
         <LinearLayout
             android:id="@+id/linearLayout5"
@@ -89,10 +77,10 @@
             android:layout_marginTop="10dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            android:weightSum="3"
+            android:weightSum="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_payment">
+            app:layout_constraintTop_toBottomOf="@+id/tv_sc_address">
 
             <LinearLayout
                 android:id="@+id/btn_show_inquiries_detail"
@@ -138,7 +126,7 @@
                 android:id="@+id/btn_show_inquiries_sc"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginHorizontal="6dp"
+                android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:background="@drawable/menu_box"
                 android:backgroundTint="@color/primaryColor"
@@ -175,46 +163,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/btn_show_inquiries_wo"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/menu_box"
-                android:backgroundTint="@color/primaryColor"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/menu_box_inquiries"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/ikon_tombol_detail"
-                        android:src="@drawable/ic_eye"
-                        app:tint="@color/primaryDarkColor" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:gravity="center"
-                    android:text="@string/inquiries_work_order"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
         <TextView
@@ -229,37 +177,90 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_status">
+
+            <com.chand.progressbutton.ProgressButton
+                android:id="@+id/btn_reject"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                app:p_arrowVisible="false"
+                app:p_backgroundTint="@color/md_deep_orange_700"
+                app:p_bgColor="@color/md_deep_orange_300"
+                app:p_cornerRadius="5dp"
+                app:p_icon="@drawable/ic_close"
+                app:p_iconGravity="textStart"
+                app:p_iconPadding="4dp"
+                app:p_iconSize="18dp"
+                app:p_layoutDirection="ltr"
+                app:p_progressBGColor="@color/md_deep_orange_700"
+                app:p_progressColor="@color/md_deep_orange_300"
+                app:p_rippleColor="@color/md_deep_orange_300"
+                app:p_style="circleBar"
+                app:p_text="Reject"
+                app:p_textColor="@color/white"
+                app:p_textSize="18sp"
+                tools:layout_editor_absoluteX="12dp" />
+
+            <com.chand.progressbutton.ProgressButton
+                android:id="@+id/btn_approve"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                app:p_arrowVisible="false"
+                app:p_backgroundTint="@color/md_green_600"
+                app:p_bgColor="@color/md_green_300"
+                app:p_cornerRadius="5dp"
+                app:p_icon="@drawable/ic_checked"
+                app:p_iconGravity="textStart"
+                app:p_iconPadding="4dp"
+                app:p_layoutDirection="ltr"
+                app:p_progressBGColor="@color/md_green_600"
+                app:p_progressColor="@color/md_green_300"
+                app:p_rippleColor="@color/md_green_300"
+                app:p_style="circleBar"
+                app:p_text="Approve it!"
+                app:p_textColor="@color/white"
+                app:p_textSize="18sp"
+                tools:layout_editor_absoluteX="12dp" />
+
+        </LinearLayout>
+
         <com.chand.progressbutton.ProgressButton
-            android:id="@+id/btn_make_it"
+            android:id="@+id/btn_customer_approved"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="4dp"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/tv_inquiries_status"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
             app:p_arrowVisible="false"
             app:p_backgroundTint="@color/md_green_600"
             app:p_bgColor="@color/md_green_300"
             app:p_cornerRadius="5dp"
+            app:p_icon="@drawable/ic_checked"
+            app:p_iconGravity="textStart"
+            app:p_iconPadding="4dp"
             app:p_layoutDirection="ltr"
             app:p_progressBGColor="@color/md_green_600"
             app:p_progressColor="@color/md_green_300"
             app:p_rippleColor="@color/md_green_300"
             app:p_style="circleBar"
-            app:p_text="Make it!"
+            app:p_text="Customer Approved"
             app:p_textColor="@color/white"
             app:p_textSize="18sp"
             tools:layout_editor_absoluteX="12dp" />
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/imageView2"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:contentDescription="@string/button_dropdown"-->
-        <!--            android:src="@drawable/ic_dropdown"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:tint="@color/md_grey_600" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

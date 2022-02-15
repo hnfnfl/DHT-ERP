@@ -111,4 +111,5 @@
     <string name="sc_wo_created_date">Created Date</string>
     <string name="sc_wo_customer">Customer</string>
     <string name="tv_sc_net_gross">Net : %1$s | Gross : %2$s</string>
+    <string name="inquiries_status_process">Process</string>
 </resources>

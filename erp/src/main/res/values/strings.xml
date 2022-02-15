@@ -140,5 +140,7 @@
     <string name="sc_wo_created_date">Tanggal Dibuat</string>
     <string name="sc_wo_customer">Pelanggan</string>
     <string name="tv_sc_net_gross">Netto : %1$s | Bruto : %2$s</string>
+    <string name="inquiries_status_rejected" translatable="false">Rejected, please fix it on Inquiries</string>
+    <string name="inquiries_status_process">Proses</string>
 
 </resources>

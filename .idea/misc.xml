@@ -37,6 +37,7 @@
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_login_web_app.xml" value="0.17831813576494426" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_reset_login.xml" value="0.2848731884057971" />
+        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_sales_contract.xml" value="0.26313405797101447" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/activity_view_access.xml" value="0.33" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/bottom_sheet_admin_action.xml" value="0.17831813576494426" />
@@ -52,12 +53,13 @@
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_access_right.xml" value="0.33" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_admin.xml" value="0.17831813576494426" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_goods.xml" value="0.2558876811594203" />
-        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_inquiries.xml" value="0.33" />
+        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_inquiries.xml" value="0.42047026279391425" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_inquiries_process.xml" value="0.5" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_inquiries_product.xml" value="0.25" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_level.xml" value="0.2848731884057971" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_product.xml" value="0.25" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_product_composition.xml" value="0.2558876811594203" />
+        <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_sales_contract.xml" value="0.33" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_shipment.xml" value="0.264945652173913" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_supplier.xml" value="0.17831813576494426" />
         <entry key="..\:/Work Pak Eko/DHT/App/erp/src/main/res/layout/item_view_access_right.xml" value="0.2726449275362319" />
