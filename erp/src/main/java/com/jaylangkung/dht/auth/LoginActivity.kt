@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityLoginBinding
 import com.jaylangkung.dht.retrofit.AuthService
 import com.jaylangkung.dht.retrofit.response.LoginResponse
+import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
 import com.jaylangkung.dht.utils.MySharedPreferences
 import es.dmoral.toasty.Toasty

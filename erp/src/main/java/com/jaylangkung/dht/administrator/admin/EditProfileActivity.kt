@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
@@ -13,12 +14,12 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.e_kan.utils.FileUtils
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
-import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityEditProfileBinding
 import com.jaylangkung.dht.retrofit.DataService
 import com.jaylangkung.dht.retrofit.response.DataSpinnerResponse
+import com.jaylangkung.dht.retrofit.response.DefaultResponse
 import com.jaylangkung.dht.retrofit.spinnerData.DataSpinnerEntity
 import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
@@ -37,7 +38,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
     private lateinit var myPreferences: MySharedPreferences
-    var photoUri: Uri? = null
+    private var photoUri: Uri? = null
 
     private var listLevel: ArrayList<DataSpinnerEntity> = arrayListOf()
     private var listDepartment: ArrayList<DataSpinnerEntity> = arrayListOf()
@@ -77,6 +78,7 @@ class EditProfileActivity : AppCompatActivity() {
         }
 
         getSpinnerData(tokenAuth, level, departemen)
+        Log.e("debug", departemen)
 
         binding.tvEditAdminName.setText(nama)
         binding.tvEditAdminEmail.setText(email)

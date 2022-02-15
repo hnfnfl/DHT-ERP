@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity() {
         binding.llBody.setOnRefreshListener {
             getPersentaseProses(tokenAuth)
         }
+
     }
 
     override fun onBackPressed() {
@@ -243,6 +244,7 @@ class MainActivity : AppCompatActivity() {
                                         putExtra(EditProfileActivity.img, myPreferences.getValue(Constants.FOTO_PATH).toString())
                                         putExtra(EditProfileActivity.from, "MainActivity")
                                     }
+
                                 10L -> Log.d("menu", drawerItem.identifier.toString())
                                 11L -> intent = Intent(context, CustomerActivity::class.java)
                                 12L -> Log.d("menu", drawerItem.identifier.toString())
