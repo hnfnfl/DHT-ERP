@@ -10,9 +10,7 @@ import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityPackingBinding
-import com.jaylangkung.dht.dht.inquiries.InquiriesEntity
 import com.jaylangkung.dht.retrofit.DhtService
-import com.jaylangkung.dht.retrofit.response.InquiriesResponse
 import com.jaylangkung.dht.retrofit.response.PackingResponse
 import com.jaylangkung.dht.utils.Constants
 import com.jaylangkung.dht.utils.ErrorHandler
