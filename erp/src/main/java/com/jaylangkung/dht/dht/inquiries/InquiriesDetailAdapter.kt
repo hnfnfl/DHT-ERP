@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemInquiriesProductBinding
+import okhttp3.internal.format
 import java.text.DecimalFormat
 
 class InquiriesDetailAdapter : RecyclerView.Adapter<InquiriesDetailAdapter.ItemHolder>() {
@@ -23,9 +24,10 @@ class InquiriesDetailAdapter : RecyclerView.Adapter<InquiriesDetailAdapter.ItemH
             with(binding) {
                 val formatter = DecimalFormat("#,###")
                 val subTotal = formatter.format(item.sub_total.toInt()).toString()
+                val qty = formatter.format(item.jumlah.toInt()).toString()
                 tvProductName.text = item.produk
                 tvProductBasePrice.text = itemView.context.getString(R.string.inquiries_product_price, item.harga)
-                tvProductQty.text = itemView.context.getString(R.string.inquiries_product_qty, item.jumlah)
+                tvProductQty.text = itemView.context.getString(R.string.inquiries_product_qty, qty)
                 tvProductSubtotal.text = itemView.context.getString(R.string.inquiries_product_subtotal, subTotal)
                 tvProductPacking.text = itemView.context.getString(R.string.inquiries_product_packing, item.packing)
             }
