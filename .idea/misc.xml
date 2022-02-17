@@ -55,19 +55,29 @@
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/drawable/ic_menu.xml" value="0.2203125" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/drawable/menu_box.xml" value="0.2203125" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/drawable/menu_box_inquiries.xml" value="0.2203125" />
-        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_admin.xml" value="0.18" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_admin.xml" value="0.25" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_admin_change_pass.xml" value="0.25" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_breakdown.xml" value="0.25" />
-        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_customer.xml" value="0.33" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_customer.xml" value="0.25" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_department.xml" value="0.19701086956521738" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_goods.xml" value="0.20416666666666666" />
-        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_inquiries.xml" value="0.25" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_inquiries.xml" value="0.5" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_level.xml" value="0.1" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_logger.xml" value="0.25" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_login_web_app.xml" value="0.22" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_packing.xml" value="0.25" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_packing_scanner.xml" value="0.19701086956521738" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_product.xml" value="0.19701086956521738" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_sales_contract.xml" value="0.19701086956521738" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_setting.xml" value="0.18297101449275363" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_shipment.xml" value="0.25" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_splash_screen.xml" value="0.19701086956521738" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_supplier.xml" value="0.25" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_view_access.xml" value="0.19701086956521738" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/activity_work_order.xml" value="0.25" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/bottom_sheet_admin_action.xml" value="0.33" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/bottom_sheet_inquiries_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/bottom_sheet_product_detail.xml" value="0.25" />
@@ -85,6 +95,7 @@
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/item_product_composition.xml" value="0.20416666666666666" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/item_product_specification.xml" value="0.20416666666666666" />
         <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/item_shipment.xml" value="0.25" />
+        <entry key="..\:/Work_Pak_Eko/DHT/App/erp/src/main/res/layout/item_supplier.xml" value="0.19701086956521738" />
       </map>
     </option>
   </component>
