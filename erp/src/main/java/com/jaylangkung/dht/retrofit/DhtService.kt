@@ -28,6 +28,13 @@ interface DhtService {
         @Header("Authorization") tokenAuth: String
     ): Call<DefaultResponse>
 
+    @FormUrlEncoded
+    @POST("dht/getWorkOrderBreakdown")
+    fun getWorkOrderBreakdown(
+        @Field("idproduk") idproduk: String,
+        @Header("Authorization") tokenAuth: String
+    ): Call<DefaultResponse>
+
     @GET("dht/getPackingBarcode")
     fun getPackingBarcode(
         @Header("Authorization") tokenAuth: String,

@@ -118,4 +118,7 @@
     <string name="packing_load_container">Load to container</string>
     <string name="packing">Packing</string>
     <string name="department">Department</string>
+    <string name="goods_needs_each">Need for each product: %1$s</string>
+    <string name="packing_load">Load: %1$s</string>
+    <string name="breakdown_work_order">Breakdown Work Order</string>
 </resources>

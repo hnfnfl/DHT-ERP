@@ -148,5 +148,9 @@
     <string name="packing_load_container">Masuk kontainer</string>
     <string name="packing">Packing</string>
     <string name="department">Departemen</string>
+    <string name="work_order_breakdown" translatable="false">Breakdown</string>
+    <string name="goods_needs_each">Kebutuhan setiap produk: %1$s</string>
+    <string name="packing_load">Muat: %1$s</string>
+    <string name="breakdown_work_order">Breakdown Work Order</string>
 
 </resources>
