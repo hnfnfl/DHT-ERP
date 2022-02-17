@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ItemBreakdownPackingBinding
-import com.jaylangkung.dht.utils.MySharedPreferences
 
 class BreakdownPackingAdapter : RecyclerView.Adapter<BreakdownPackingAdapter.ItemHolder>() {
 
@@ -19,12 +18,12 @@ class BreakdownPackingAdapter : RecyclerView.Adapter<BreakdownPackingAdapter.Ite
     }
 
     class ItemHolder(private val binding: ItemBreakdownPackingBinding) : RecyclerView.ViewHolder(binding.root) {
-        private lateinit var myPreferences: MySharedPreferences
-
         fun bind(item: BreakdownDetailEntity) {
             with(binding) {
                 tvPackingNameCode.text = itemView.context.getString(R.string.product_name_category, item.packing, item.kode_packing)
-                tvPackingLoad.text = item.muat
+                tvPackingLoad.text = itemView.context.getString(R.string.packing_load, item.muat)
+                tvPackingQty.text = itemView.context.getString(R.string.inquiries_product_qty, item.jumlah)
+                tvPackingTotal.text = itemView.context.getString(R.string.breakdown_total, item.total)
             }
         }
     }

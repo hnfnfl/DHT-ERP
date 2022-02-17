@@ -152,5 +152,6 @@
     <string name="goods_needs_each">Kebutuhan setiap produk: %1$s</string>
     <string name="packing_load">Muat: %1$s</string>
     <string name="breakdown_work_order">Breakdown Work Order</string>
+    <string name="breakdown_total" translatable="false">Total: %1$s</string>
 
 </resources>

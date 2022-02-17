@@ -7,4 +7,6 @@ class BreakdownDetailEntity(
     var kode_packing: String = "",
     var packing: String = "",
     var muat: String = "",
+    var total: String = "",
+    var jumlah: String = "",
 )

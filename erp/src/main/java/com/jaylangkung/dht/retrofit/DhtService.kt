@@ -31,9 +31,9 @@ interface DhtService {
     @FormUrlEncoded
     @POST("dht/getWorkOrderBreakdown")
     fun getWorkOrderBreakdown(
-        @Field("idproduk") idproduk: String,
+        @Field("idinquiries") idinquiries: String,
         @Header("Authorization") tokenAuth: String
-    ): Call<DefaultResponse>
+    ): Call<BreakdownResponse>
 
     @GET("dht/getPackingBarcode")
     fun getPackingBarcode(
