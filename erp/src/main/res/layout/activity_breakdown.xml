@@ -9,11 +9,11 @@
     <LinearLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="@drawable/header_box"
+        android:backgroundTint="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:backgroundTint="#8057D3D7"
-        android:background="@drawable/header_box"
         android:paddingHorizontal="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,14 +29,15 @@
             android:minHeight="48dp"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/breakdown_work_order"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -45,7 +46,7 @@
         android:id="@+id/rv_breakdown"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:paddingHorizontal="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

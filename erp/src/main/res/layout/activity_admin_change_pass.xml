@@ -9,11 +9,12 @@
     <LinearLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:layout_height="60dp"
+        android:background="@drawable/header_box"
+        android:backgroundTint="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
+        android:paddingHorizontal="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,14 +29,15 @@
             android:minHeight="48dp"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/admin_change_pass"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -45,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="70dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,9 +101,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text=""
-            android:visibility="gone"
             android:textColor="@color/md_red_700"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <com.chand.progressbutton.ProgressButton
             android:id="@+id/btn_save_password"

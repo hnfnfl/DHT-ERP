@@ -9,11 +9,13 @@
     <LinearLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:layout_height="60dp"
+        android:background="@drawable/header_box"
+        android:backgroundTint="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/rv_customer"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -27,14 +29,15 @@
             android:minHeight="48dp"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/customer"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -76,18 +79,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rv_customer" />
 
-<!--    <com.github.clans.fab.FloatingActionButton-->
-<!--        android:id="@+id/fab_add_customer"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="12dp"-->
-<!--        android:src="@drawable/ic_add"-->
-<!--        app:fab_colorNormal="@color/secondaryColor"-->
-<!--        app:fab_colorPressed="@color/secondaryDarkColor"-->
-<!--        app:fab_colorRipple="@color/secondaryColor"-->
-<!--        app:fab_label="@string/add_new_level"-->
-<!--        app:fab_size="normal"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
+    <!--    <com.github.clans.fab.FloatingActionButton-->
+    <!--        android:id="@+id/fab_add_customer"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="12dp"-->
+    <!--        android:src="@drawable/ic_add"-->
+    <!--        app:fab_colorNormal="@color/secondaryColor"-->
+    <!--        app:fab_colorPressed="@color/secondaryDarkColor"-->
+    <!--        app:fab_colorRipple="@color/secondaryColor"-->
+    <!--        app:fab_label="@string/add_new_level"-->
+    <!--        app:fab_size="normal"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
