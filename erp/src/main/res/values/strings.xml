@@ -153,5 +153,6 @@
     <string name="packing_load">Muat: %1$s</string>
     <string name="breakdown_work_order">Breakdown Work Order</string>
     <string name="breakdown_total" translatable="false">Total: %1$s</string>
+    <string name="app_logo">app logo</string>
 
 </resources>

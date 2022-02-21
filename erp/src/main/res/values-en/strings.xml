@@ -121,4 +121,5 @@
     <string name="goods_needs_each">Need for each product: %1$s</string>
     <string name="packing_load">Load: %1$s</string>
     <string name="breakdown_work_order">Breakdown Work Order</string>
+    <string name="app_logo">app logo</string>
 </resources>
