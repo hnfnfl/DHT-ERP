@@ -10,4 +10,5 @@ class InquiriesDetailEntity(
     var jumlah: String = "",
     var sub_total: String = "",
     var packing: String = "",
+    var barang: String = "",
 )

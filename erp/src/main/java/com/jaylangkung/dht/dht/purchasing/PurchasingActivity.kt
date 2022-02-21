@@ -6,10 +6,13 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jaylangkung.brainnet_staff.retrofit.RetrofitClient
 import com.jaylangkung.dht.MainActivity
 import com.jaylangkung.dht.R
 import com.jaylangkung.dht.databinding.ActivityPurchasingBinding
+import com.jaylangkung.dht.databinding.BottomSheetPurchasingDetailBinding
+import com.jaylangkung.dht.dht.inquiries.InquiriesDetailEntity
 import com.jaylangkung.dht.retrofit.DhtService
 import com.jaylangkung.dht.retrofit.response.PurchasingResponse
 import com.jaylangkung.dht.utils.Constants
@@ -18,13 +21,17 @@ import com.jaylangkung.dht.utils.MySharedPreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
 class PurchasingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPurchasingBinding
+    private lateinit var detailBinding: BottomSheetPurchasingDetailBinding
     private lateinit var myPreferences: MySharedPreferences
     private lateinit var purchasingAdapter: PurchasingAdapter
+    private lateinit var purchasingDetailAdapter: PurchasingDetailAdapter
     private var listData: ArrayList<PurchasingEntity> = arrayListOf()
+    private var listDataDetail: ArrayList<InquiriesDetailEntity> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +39,7 @@ class PurchasingActivity : AppCompatActivity() {
         setContentView(binding.root)
         myPreferences = MySharedPreferences(this@PurchasingActivity)
         purchasingAdapter = PurchasingAdapter()
+        purchasingDetailAdapter = PurchasingDetailAdapter()
 
         val tokenAuth = getString(R.string.token_auth, myPreferences.getValue(Constants.TokenAuth).toString())
 
@@ -43,7 +51,30 @@ class PurchasingActivity : AppCompatActivity() {
 
         purchasingAdapter.setOnItemClickCallback(object : PurchasingAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ArrayList<PurchasingEntity>, position: Int) {
+                detailBinding = BottomSheetPurchasingDetailBinding.inflate(layoutInflater)
+                val dialog = BottomSheetDialog(this@PurchasingActivity)
 
+                listDataDetail = data[position].detail
+                purchasingDetailAdapter.setItem(listDataDetail)
+                purchasingDetailAdapter.notifyItemRangeChanged(0, listDataDetail.size)
+
+                with(detailBinding.rvDetailProduct) {
+                    layoutManager = LinearLayoutManager(this@PurchasingActivity)
+                    itemAnimator = DefaultItemAnimator()
+                    setHasFixedSize(true)
+                    adapter = purchasingDetailAdapter
+                }
+
+                with(detailBinding) {
+                    tvPurchasingDetailTitle.text = data[position].kode
+                    tvDetailGoodsTotal.text = getString(R.string.inquiries_product_total, data[position].total)
+                }
+
+                dialog.behavior.peekHeight = 600
+                dialog.behavior.maxHeight = 1200
+                dialog.setCancelable(true)
+                dialog.setContentView(detailBinding.root)
+                dialog.show()
             }
         })
     }

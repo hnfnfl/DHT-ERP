@@ -57,7 +57,7 @@ class WorkOrderAdapter : RecyclerView.Adapter<WorkOrderAdapter.ItemHolder>() {
                 tvWoAddress.text = item.alamat
                 tvWoCreatedate.text = itemView.context.getString(R.string.inquiries_createddate, item.createddate)
                 tvWoUpdatedate.text = itemView.context.getString(R.string.inquiries_lastupdate, item.lastupdate)
-                tvWoShipmentDate.text = item.shipment_send
+                tvWoShipmentDate.text =  itemView.context.getString(R.string.purchasing_estimated_delivery, item.shipment_send)
                 val status: String
                 when (item.status) {
                     "waiting_approval" -> {

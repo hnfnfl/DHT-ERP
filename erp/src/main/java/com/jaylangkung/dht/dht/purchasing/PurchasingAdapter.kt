@@ -33,7 +33,32 @@ class PurchasingAdapter : RecyclerView.Adapter<PurchasingAdapter.ItemHolder>() {
                 tvPurchasingSupplier.text = item.nama
                 tvPurchasingCreatedate.text = itemView.context.getString(R.string.inquiries_createddate, item.createddate)
                 tvPurchasingEstimated.text = itemView.context.getString(R.string.purchasing_estimated_delivery, item.estimasi_delivery)
-                tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, item.status)
+                when (item.status) {
+                    "check_list" -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, "Check List")
+                    }
+                    "rejected" -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, "Rejected")
+                    }
+                    "waiting_approval" -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, "Waiting Approval")
+                    }
+                    "waiting_delivery" -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, "Waiting Delivery")
+                    }
+                    "completed" -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, "Completed")
+                    }
+                    "draft" -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, "Draft")
+                    }
+                    "waiting_for_edit" -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, "Waiting For Edit")
+                    }
+                    else -> {
+                        tvInquiriesStatus.text = itemView.context.getString(R.string.inquiries_status, item.status)
+                    }
+                }
             }
         }
 
