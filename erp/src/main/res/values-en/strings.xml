@@ -122,4 +122,5 @@
     <string name="packing_load">Load: %1$s</string>
     <string name="breakdown_work_order">Breakdown Work Order</string>
     <string name="app_logo">app logo</string>
+    <string name="purchasing_estimated_delivery">Estimated delivery : %1$s</string>
 </resources>

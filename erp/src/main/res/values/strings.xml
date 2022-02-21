@@ -154,5 +154,6 @@
     <string name="breakdown_work_order">Breakdown Work Order</string>
     <string name="breakdown_total" translatable="false">Total: %1$s</string>
     <string name="app_logo">app logo</string>
+    <string name="purchasing_estimated_delivery">Perkiraan pengiriman : %1$s</string>
 
 </resources>

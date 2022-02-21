@@ -46,4 +46,9 @@ interface DhtService {
         @Field("kode") kode: String,
         @Header("Authorization") tokenAuth: String
     ): Call<DefaultResponse>
+
+    @GET("dht/getBarangPo")
+    fun getBarangPo(
+        @Header("Authorization") tokenAuth: String,
+    ): Call<PurchasingResponse>
 }
