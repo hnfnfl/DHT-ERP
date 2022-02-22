@@ -55,7 +55,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -132,27 +131,34 @@ class MainActivity : AppCompatActivity() {
 
     private fun getMenu(idadmin: String, idlevel: String, tokenAuth: String) {
 
-        val iconMenu: ArrayList<Int> = arrayListOf(
-            R.drawable.ic_dashboard, //0
-            R.drawable.ic_dashboard, //1
-            R.drawable.ic_setting, //2
-            R.drawable.ic_administrator, //3
-            R.drawable.ic_admin, //4
-            R.drawable.ic_sticky_note, //5
-            R.drawable.ic_sitemap, //6
-            R.drawable.ic_building, //7
-            R.drawable.ic_clipboard, //8
-            R.drawable.ic_profile, //9
-            R.drawable.ic_building, //10
-            R.drawable.ic_administrator, //11
-            R.drawable.ic_wrench, //12
-            R.drawable.ic_setting, //13
-            R.drawable.ic_folder, //14
-            R.drawable.ic_process, //15
-            R.drawable.ic_bug, //16
-            R.drawable.ic_administrator, //17
-            R.drawable.ic_product, //18
-
+        val iconMenu = mapOf(
+            1 to R.drawable.ic_dashboard,
+            2 to R.drawable.ic_setting,
+            3 to R.drawable.ic_administrator,
+            4 to R.drawable.ic_admin,
+            5 to R.drawable.ic_sticky_note,
+            6 to R.drawable.ic_sitemap,
+            7 to R.drawable.ic_building,
+            8 to R.drawable.ic_clipboard,
+            9 to R.drawable.ic_profile,
+            10 to R.drawable.ic_building,
+            11 to R.drawable.ic_administrator,
+            12 to R.drawable.ic_wrench,
+            13 to R.drawable.ic_setting,
+            14 to R.drawable.ic_folder,
+            15 to R.drawable.ic_process,
+            16 to R.drawable.ic_bug,
+            17 to R.drawable.ic_administrator,
+            18 to R.drawable.ic_product,
+            19 to R.drawable.ic_factory,
+            20 to R.drawable.ic_check_list,
+            21 to R.drawable.ic_document,
+            22 to R.drawable.ic_process,
+            23 to R.drawable.ic_goods,
+            24 to R.drawable.ic_shipping,
+            25 to R.drawable.ic_goods,
+            27 to R.drawable.ic_purchase_order,
+            29 to R.drawable.ic_goods,
         )
 
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
@@ -167,27 +173,23 @@ class MainActivity : AppCompatActivity() {
                                 val subMenu = menu[i].sub_menu
                                 if (!subMenu.isNullOrEmpty()) {
                                     val item = ExpandableDrawerItem().apply {
-
-                                        try { //index out of bound exception handler
+                                        try {
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconRes =
-                                                iconMenu[idmodul]; icon
-                                        } catch (exception: IndexOutOfBoundsException) {
+                                                iconMenu[idmodul]!!
+                                        } catch (exception: NullPointerException) {
                                             nameText = menu[i].menu; identifier = idmodul.toLong(); isSelectable = false; iconicsIcon =
                                                 GoogleMaterial.Icon.gmd_dashboard
                                         }
-
                                         for (j in 0 until subMenu.size) {
                                             val idmodulSub = subMenu[j].idmodul.toInt()
                                             subItems.add(SecondaryDrawerItem().apply {
-
-                                                try { //index out of bound exception handler
+                                                try {
                                                     nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconRes =
-                                                        iconMenu[idmodulSub]
-                                                } catch (exception: IndexOutOfBoundsException) {
+                                                        iconMenu[idmodulSub]!!
+                                                } catch (exception: NullPointerException) {
                                                     nameText = subMenu[j].menu; level = 2; identifier = idmodulSub.toLong(); iconicsIcon =
                                                         GoogleMaterial.Icon.gmd_dashboard
                                                 }
-
                                             })
                                         }
                                     }
@@ -195,18 +197,16 @@ class MainActivity : AppCompatActivity() {
 
                                 } else {
                                     addItems(
-
-                                        try { //index out of bound exception handler
+                                        try {
                                             PrimaryDrawerItem().apply {
-                                                nameText = menu[i].menu; identifier = idmodul.toLong(); iconRes = iconMenu[idmodul]
+                                                nameText = menu[i].menu; identifier = idmodul.toLong(); iconRes = iconMenu[idmodul]!!
                                             }
-                                        } catch (exception: IndexOutOfBoundsException) {
+                                        } catch (exception: NullPointerException) {
                                             PrimaryDrawerItem().apply {
                                                 nameText = menu[i].menu; identifier = idmodul.toLong(); iconicsIcon =
                                                 GoogleMaterial.Icon.gmd_dashboard
                                             }
                                         }
-
                                     )
                                 }
                             }
@@ -233,7 +233,6 @@ class MainActivity : AppCompatActivity() {
                                 5L -> intent = Intent(context, MainActivity::class.java)
                                 6L -> intent = Intent(context, LevelActivity::class.java)
                                 7L -> intent = Intent(context, DepartmentActivity::class.java)
-                                8L -> intent = Intent(context, MainActivity::class.java)
                                 9L -> intent = Intent(context, EditProfileActivity::class.java)
                                     .apply {
                                         putExtra(EditProfileActivity.idadmin, myPreferences.getValue(Constants.USER_IDADMIN).toString())
@@ -246,14 +245,9 @@ class MainActivity : AppCompatActivity() {
                                         putExtra(EditProfileActivity.img, myPreferences.getValue(Constants.FOTO_PATH).toString())
                                         putExtra(EditProfileActivity.from, "MainActivity")
                                     }
-
                                 10L -> Log.d("menu", drawerItem.identifier.toString())
                                 11L -> intent = Intent(context, CustomerActivity::class.java)
                                 12L -> Log.d("menu", drawerItem.identifier.toString())
-                                13L -> intent = Intent(context, MainActivity::class.java)
-                                14L -> intent = Intent(context, MainActivity::class.java)
-                                15L -> intent = Intent(context, MainActivity::class.java)
-                                16L -> intent = Intent(context, MainActivity::class.java)
                                 17L -> intent = Intent(context, SupplierActivity::class.java)
                                 18L -> intent = Intent(context, ProductActivity::class.java)
                                 19L -> Log.d("menu", drawerItem.identifier.toString())
@@ -263,7 +257,6 @@ class MainActivity : AppCompatActivity() {
                                 23L -> intent = Intent(context, PackingActivity::class.java)
                                 24L -> intent = Intent(context, ShipmentActivity::class.java)
                                 25L -> intent = Intent(context, GoodsActivity::class.java)
-
                                 27L -> intent = Intent(context, PurchasingActivity::class.java)
 
                                 99L -> logout(idadmin)

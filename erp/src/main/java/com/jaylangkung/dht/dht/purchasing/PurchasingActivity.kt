@@ -21,7 +21,6 @@ import com.jaylangkung.dht.utils.MySharedPreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.DecimalFormat
 
 class PurchasingActivity : AppCompatActivity() {
 
