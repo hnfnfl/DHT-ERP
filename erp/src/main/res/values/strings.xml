@@ -155,5 +155,11 @@
     <string name="breakdown_total" translatable="false">Total: %1$s</string>
     <string name="app_logo">app logo</string>
     <string name="purchasing_estimated_delivery">Perkiraan pengiriman : %1$s</string>
+    <string name="design_packing_composition">Komposisi</string>
+    <string name="design_packing_used_for">Digunakan untuk produk</string>
+    <string name="need_goods">Butuh barang</string>
+    <string name="needs">Kebutuhan</string>
+    <string name="design_packing">Design Packing</string>
+    <string name="load">Muatan</string>
 
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dht.sales_contract.SalesContractActivity">
+    tools:context=".master_design.design_packing.DesignPackingActivity">
 
     <LinearLayout
         android:id="@+id/ll_header"
@@ -36,14 +36,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/inquiries_sales_contract"
+            android:text="@string/design_packing"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_sales_contract"
+        android:id="@+id/rv_design_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_sales_contract" />
+        tools:listitem="@layout/item_design_packing" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/loading_anim"
@@ -61,10 +61,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:SpinKit_Color="@color/secondaryLightColor"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_sales_contract"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_design_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_sales_contract" />
+        app:layout_constraintTop_toTopOf="@+id/rv_design_product" />
 
     <ImageView
         android:id="@+id/empty"
@@ -73,9 +73,9 @@
         android:contentDescription="@string/icon_empty"
         android:src="@drawable/ic_empty"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_sales_contract"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_design_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_sales_contract" />
+        app:layout_constraintTop_toTopOf="@+id/rv_design_product" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

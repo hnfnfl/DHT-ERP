@@ -30,6 +30,7 @@ import com.jaylangkung.dht.dht.work_order.WorkOrderActivity
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessAdapter
 import com.jaylangkung.dht.inquiries_progress.InquiriesProcessEntity
 import com.jaylangkung.dht.master_design.customer.CustomerActivity
+import com.jaylangkung.dht.master_design.design_packing.DesignPackingActivity
 import com.jaylangkung.dht.master_design.goods.GoodsActivity
 import com.jaylangkung.dht.master_design.product.ProductActivity
 import com.jaylangkung.dht.master_design.shipment.ShipmentActivity
@@ -258,6 +259,7 @@ class MainActivity : AppCompatActivity() {
                                 24L -> intent = Intent(context, ShipmentActivity::class.java)
                                 25L -> intent = Intent(context, GoodsActivity::class.java)
                                 27L -> intent = Intent(context, PurchasingActivity::class.java)
+                                29L -> intent = Intent(context, DesignPackingActivity::class.java)
 
                                 99L -> logout(idadmin)
                                 else -> Toasty.warning(context, getString(R.string.menu_not_avail), Toasty.LENGTH_SHORT).show()
